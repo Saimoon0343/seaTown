@@ -4,6 +4,7 @@ import HomeScreen from './HomeScreen/HomeScreen';
 import InvoiceScreen from './InvoiceScreen/InvoiceScreen';
 import LoginScreen from './LoginScreen/loginScreen';
 import MemberShipScreen from './MemberShipScreen/MemberShipScreen';
+import NotificationScreen from './NotificationScreen/NotificationScreen';
 import SignUpScreen from './SignUpScreen/signUpScreen';
 
 export const screens = {
@@ -14,4 +15,5 @@ export const screens = {
   EmergncySOSScreen,
   InvoiceScreen,
   MemberShipScreen,
+  NotificationScreen,
 };

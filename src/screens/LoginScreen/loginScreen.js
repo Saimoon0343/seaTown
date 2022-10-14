@@ -235,7 +235,7 @@ const LoginScreen = ({route, navigation}) => {
       <BottomTextComp
         onPress={() => navigation.navigate('SignUpScreen')}
         note={"Don't have account ? "}
-        heading={'Sing Up'}
+        heading={'Sign Up'}
       />
     </KeyboardAvoidingView>
   );
