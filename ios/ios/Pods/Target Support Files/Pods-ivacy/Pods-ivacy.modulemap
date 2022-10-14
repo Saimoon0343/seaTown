@@ -1,0 +1,6 @@
+module Pods_ivacy {
+  umbrella header "Pods-ivacy-umbrella.h"
+
+  export *
+  module * { export * }
+}
