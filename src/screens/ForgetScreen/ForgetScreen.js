@@ -33,9 +33,8 @@ import {LoginInputComp} from '../../components/LoginInputComp/LoginInputComp';
 import CheckBox from '@react-native-community/checkbox';
 import {ButtonThemeComp} from '../../components/ButtonThemeComp/ButtonThemeComp';
 import {BottomTextComp} from '../../components/BottomTextComp/BottomTextComp';
-import ForgetScreen from '../ForgetScreen/ForgetScreen';
-
-const LoginScreen = ({route, navigation}) => {
+import ResetPasswordScreen from '../ResetPasswordScreen/ResetPasswordScreen';
+const ForgetScreen = ({route, navigation}) => {
   const disptach = useDispatch();
   const emailRef = useRef();
   const LoginType = route.params;
@@ -44,7 +43,6 @@ const LoginScreen = ({route, navigation}) => {
 
   const [loginUser, setLoginUser] = useState({
     email: '',
-    password: '',
     // email: 'secowog808@geekjun.com',
     // email: 'kihosiw869@dnitem.com',
     // email: 'bilal1@gmail.com',
@@ -53,7 +51,6 @@ const LoginScreen = ({route, navigation}) => {
   const [isloading, setLoading] = useState(false);
   const [isFocused, setIsFocused] = useState({
     email: false,
-    password: false,
   });
   const handleClick = () => setShow(!show);
   const [show, setShow] = useState(false);
@@ -93,7 +90,7 @@ const LoginScreen = ({route, navigation}) => {
       />
     );
   };
-  const {email, password} = loginUser;
+  const {email} = loginUser;
   const updateState = data => setLoginUser(() => ({...loginUser, ...data}));
   // Focused handler
   const handleInputFocus = textinput => {
@@ -179,7 +176,7 @@ const LoginScreen = ({route, navigation}) => {
           style={styles.topImage}
           resizeMode="contain"
         />
-        <TextHeadingCom heading={'Login'} style={{marginTop: hp('10')}} />
+        <TextHeadingCom heading={'Forget Password'} style={{marginTop: hp('10')}} />
         <Text
           style={{
             fontSize: hp('1.5'),
@@ -194,7 +191,7 @@ const LoginScreen = ({route, navigation}) => {
           value={email}
           onChangeText={email => updateState({email})}
           inputText="Email"
-          placeholder="mail@gmail.com"
+          placeholder="Enter Your Email"
           onFocus={() => {
             handleInputFocus('email');
           }}
@@ -202,181 +199,17 @@ const LoginScreen = ({route, navigation}) => {
           isFocused={isFocused.email}
           style={{marginTop: hp('6')}}
         />
-        <LoginInputComp
-          value={password}
-          onChangeText={password => updateState({password})}
-          inputText="Password"
-          placeholder="password"
-          onFocus={() => handleInputFocus('password')}
-          onBlur={() => handleInputBlur('password')}
-          secureTextEntry={show ? false : true}
-          eyeIconPress={handleClick}
-          eyeIconName={show ? 'eye-outline' : 'eye-off-outline'}
-          isFocused={isFocused.password}
-          eyeIcon={true}
-          style={{marginTop: hp('2')}}
-        />
-        <View style={styles.rememberView}>
-          <CheckBox
-            disabled={false}
-            value={toggleCheckBox}
-            onValueChange={newValue => setToggleCheckBox(newValue)}
-          />
-          <Text style={styles.rememberText}>Remember me</Text>
-          <TouchableOpacity style={{marginLeft: 'auto'}} onPress={()=>navigation.navigate('ForgetScreen')}>
-            <Text style={styles.forgetText}>Forget Password?</Text>
-          </TouchableOpacity>
-        </View>
+        
+       
         <ButtonThemeComp
-          onPress={() => navigation.navigate('MybottomTabs')}
-          text={'Login'}
+          onPress={() => navigation.navigate('ResetPasswordScreen')}
+          text={'Submit'}
           style={{marginTop: hp('2')}}
         />
       </ScrollView>
-      <BottomTextComp
-        onPress={() => navigation.navigate('SignUpScreen')}
-        note={"Don't have account ? "}
-        heading={'Sing Up'}
-      />
+     
     </KeyboardAvoidingView>
   );
 };
 
-export default LoginScreen;
-// {/* <ImageBackground
-// style={styles.backgroundImage}
-// source={require('../../images/background.png')}>
-// <KeyboardAvoidingView
-//   behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-//   style={styles.container}>
-//   <TouchableOpacity
-//     style={{
-//       top: hp('4'),
-//       left: wp('2'),
-//       height: hp('7.5'),
-//       width: wp('10'),
-//     }}
-//     onPress={() => {
-//       navigation.goBack();
-//     }}>
-//     <Ionicons
-//       name="arrow-back"
-//       color={'white'}
-//       size={hp('5')}
-
-//       // style={{backgroundColor:'red',top: hp('4'), left: wp('2')}}
-//     />
-//   </TouchableOpacity>
-//   <ScrollView
-//     contentContainerStyle={{paddingBottom: hp('10')}}
-//     showsVerticalScrollIndicator={false}>
-//     <Animatable.View
-//       animation="fadeInUpBig"
-//       direction={'normal'}
-//       delay={100}
-//       style={styles.innerView}>
-//       <Image
-//         source={require('../../images/Group680.png')}
-//         style={{
-//           marginRight: 'auto',
-//           marginLeft: wp('-10'),
-//         }}
-//       />
-//     </Animatable.View>
-//     <View style={styles.loginView}>
-//       <Animatable.Text
-//         animation="fadeInUpBig"
-//         direction={'normal'}
-//         delay={200}
-//         style={styles.mainHeading}>
-//         Login
-//       </Animatable.Text>
-//       <Animatable.View
-//         animation="fadeInUpBig"
-//         direction={'normal'}
-//         delay={300}>
-//         <TextInputCom
-//           ref={emailRef}
-//           value={email}
-//           onChangeText={email => updateState({email})}
-//           inputText="Email"
-//           placeholder="mail@gmail.com"
-//           onFocus={() => {
-//             handleInputFocus('email');
-//           }}
-//           onBlur={() => handleInputBlur('email')}
-//           isFocused={isFocused.email}
-//         />
-//       </Animatable.View>
-//       <Animatable.View
-//         animation="fadeInUpBig"
-//         direction={'normal'}
-//         delay={400}>
-//         <TextInputCom
-//           value={password}
-//           onChangeText={password => updateState({password})}
-//           inputText="Password"
-//           placeholder="*********"
-//           onFocus={() => handleInputFocus('password')}
-//           onBlur={() => handleInputBlur('password')}
-//           secureTextEntry={show ? false : true}
-//           eyeIconPress={handleClick}
-//           eyeIconName={show ? 'eye-outline' : 'eye-off-outline'}
-//           isFocused={isFocused.password}
-//           eyeIcon={true}
-//         />
-//       </Animatable.View>
-//       <Animatable.View
-//         animation="fadeInUpBig"
-//         direction={'normal'}
-//         delay={500}>
-//         <TouchableOpacity
-//           onPress={() => {
-//             let forgetPass = 'https://ivacay.co/forgot-password';
-//             Linking.openURL(forgetPass);
-//           }}
-//           style={styles.forgotTextView}>
-//           <Text
-//             style={{
-//               color: color.themeColorDark,
-//             }}>
-//             Forgot Password?
-//           </Text>
-//         </TouchableOpacity>
-//       </Animatable.View>
-//       <Animatable.View
-//         animation="fadeInUpBig"
-//         direction={'normal'}
-//         delay={600}
-//         style={styles.bottomView}>
-//         {LoginType == 'Traveller' ? (
-//           <View style={{flexDirection: 'row'}}>
-//             <Text style={styles.newUserText}>New User ? </Text>
-//             <TouchableOpacity
-//               onPress={() => navigation.navigate('SignUpScreen')}>
-//               <Text style={styles.signupText}> Signup</Text>
-//             </TouchableOpacity>
-//           </View>
-//         ) : (
-//           <View />
-//         )}
-//         {/* <ArrowButtonCom
-//           loading={isloading}
-//           onPress={() => loginFunction()}
-//           text="Submit"
-//           height={hp('4.5')}
-//           right={wp('-19')}
-//         /> */}
-
-//       <ArrowButtonComponenetDup loading={isloading}
-//             onPress={() => loginFunction()}
-//             text="Submit"
-//           loaderColor={color.boxColor}
-//           height={hp('4.5')}
-//           right={wp('-19')}/>
-//       </Animatable.View>
-
-//     </View>
-//   </ScrollView>
-// </KeyboardAvoidingView>
-// </ImageBackground> */}
+export default ForgetScreen;

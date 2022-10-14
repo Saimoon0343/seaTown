@@ -1,5 +1,6 @@
 export const color = {
   textPrimaryColor: '#243c7c',
+  yellowTxtColor:"#f7cc00",
   textSecondaryColor: '#6E74F1',
   bottomBarColor: 'rgba(60,11,168,0.5)',
   textBackgroundColor: 'rgba(36,37,61,0.5)',
@@ -25,4 +26,5 @@ export const color = {
   LightGreen: '#ebfbe7',
   darkGreen: '#00712f',
   lightPurple: '#D8CCE8',
+
 };
