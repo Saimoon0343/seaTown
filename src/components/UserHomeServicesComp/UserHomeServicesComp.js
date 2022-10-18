@@ -4,14 +4,15 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+// import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {styles} from './styles';
 
-export const HomeServicesComp = props => {
-  const RederView = props => {
-    const {data} = props;
+export const UserHomeServicesComp = props => {
+  const RederView = prop => {
+    const {data} = prop;
     return (
       <TouchableOpacity
+        onPress={() => props?.onPress(data)}
         style={{
           ...styles.touchView,
           backgroundColor: data?.id == 2 ? 'yellow' : 'white',
@@ -31,32 +32,33 @@ export const HomeServicesComp = props => {
   };
   const LoadingView = () => {
     return (
-      <SkeletonPlaceholder>
-        <View
-          style={{
-            width: wp('100'),
-            alignItems: 'center',
-            marginTop: hp('2'),
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-          }}>
-          {rederView()}
-          {rederView()}
-          {rederView()}
-          {rederView()}
-          {rederView()}
-          {rederView()}
-          {rederView()}
-          {rederView()}
-          {rederView()}
-        </View>
-      </SkeletonPlaceholder>
+      // <SkeletonPlaceholder>
+      <View
+        style={{
+          width: wp('100'),
+          alignItems: 'center',
+          marginTop: hp('2'),
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}>
+        {rederView()}
+        {rederView()}
+        {rederView()}
+        {rederView()}
+        {rederView()}
+        {rederView()}
+        {rederView()}
+        {rederView()}
+        {rederView()}
+      </View>
+      // {/* </SkeletonPlaceholder> */}
     );
   };
   return props?.isloading ? (
     <LoadingView />
   ) : (
+    // rederView()
     <FlatList
       data={props?.data}
       keyExtractor={(item, index) => index.toString()}

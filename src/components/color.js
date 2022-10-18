@@ -1,5 +1,6 @@
 export const color = {
   textPrimaryColor: '#243c7c',
+  yellowTxtColor: '#f7cc00',
   textSecondaryColor: '#6E74F1',
   bottomBarColor: 'rgba(60,11,168,0.5)',
   textBackgroundColor: 'rgba(36,37,61,0.5)',
@@ -9,6 +10,9 @@ export const color = {
   themeColorlight: '#9CF0A9',
   alertBackgroundColor: 'rgba(155,179,74,0.5)',
   themeColorDark: '#BCAFAF',
+  lightGrayColor: '#E5E9EB',
+  // lightGrayColor: '#E0E0E0',
+  lightBlueColor: '#BABBC6',
   textColor: '#434345',
   borderThirdColor: '#F0F0F0',
   white: '#ffff',
@@ -25,4 +29,5 @@ export const color = {
   LightGreen: '#ebfbe7',
   darkGreen: '#00712f',
   lightPurple: '#D8CCE8',
+  pendingText: '#C5CA5B',
 };

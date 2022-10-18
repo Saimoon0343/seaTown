@@ -8,13 +8,13 @@ import {
 } from 'react-native-responsive-screen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Platform, Dimensions, StyleSheet} from 'react-native';
-import {screens} from '../screens/index';
+import {screens} from '../screens/UserScreens/index';
 import * as Animatable from 'react-native-animatable';
 import {color} from '../components/color';
 import {globalStyles} from '../config/globalStyles';
 
 const Tab = createBottomTabNavigator();
-function MybottomTabs() {
+function UserBottomnavigation() {
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
@@ -153,7 +153,7 @@ function MybottomTabs() {
     </Tab.Navigator>
   );
 }
-export default MybottomTabs;
+export default UserBottomnavigation;
 
 const styles = StyleSheet.create({
   cartCircle: {

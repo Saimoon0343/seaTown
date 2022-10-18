@@ -11,5 +11,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: Platform.OS == 'ios' ? hp('3') : hp('0'),
+    backgroundColor: 'white',
   },
 });

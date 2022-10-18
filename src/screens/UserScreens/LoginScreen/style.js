@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '../../components/color';
+import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
   container: {
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     width: wp('50'),
     height: hp('10'),
     alignSelf: 'center',
-    top: hp('3'),
+    top: hp('-4'),
   },
   rememberView: {
     flexDirection: 'row',

@@ -10,29 +10,23 @@ import {
   Linking,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from 'react-native';
 import {styles} from './style';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '../../components/color';
-import {TextInputCom} from '../../components/TextInputCompenent/textInputCom';
-import {ArrowButtonCom} from '../../components/ArrowButtonComponenet/arrowButtonCom';
-import {ApiGet, ApiPost} from '../../config/helperFunction';
-import {LoginUrl, UserUrl} from '../../config/Urls';
+import {ApiGet, ApiPost} from '../../../config/helperFunction';
+import {LoginUrl, UserUrl} from '../../../config/Urls';
 import {useDispatch} from 'react-redux';
-import types from '../../Redux/type';
-import {errorMessage} from '../../components/NotificationMessage';
-import * as Animatable from 'react-native-animatable';
-import AwesomeAlert from 'react-native-awesome-alerts';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {ArrowButtonComponenetDup} from '../../components/ArrowButtonComponenetDup/ArrowButtonComponenetDup';
-import {TextHeadingCom} from '../../components/TextHeadingCom/TextHeadingCom';
-import {LoginInputComp} from '../../components/LoginInputComp/LoginInputComp';
+import types from '../../../Redux/type';
+import {errorMessage} from '../../../components/NotificationMessage';
+import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
+import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
 import CheckBox from '@react-native-community/checkbox';
-import {ButtonThemeComp} from '../../components/ButtonThemeComp/ButtonThemeComp';
-import {BottomTextComp} from '../../components/BottomTextComp/BottomTextComp';
+import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
+import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp';
 
 const LoginScreen = ({route, navigation}) => {
   const disptach = useDispatch();
@@ -57,41 +51,7 @@ const LoginScreen = ({route, navigation}) => {
   const handleClick = () => setShow(!show);
   const [show, setShow] = useState(false);
   const [alertState, setALertState] = useState(false);
-  const AwesomeAlertMessage = () => {
-    return (
-      <AwesomeAlert
-        show={alertState}
-        showProgress={false}
-        title="Warning!"
-        message="Account deletion is in process, please verify your email to delete your ivacay account."
-        contentContainerStyle={{
-          width: wp('80%'),
-          backgroundColor: 'white',
-        }}
-        closeOnTouchOutside={false}
-        closeOnHardwareBackPress={false}
-        showCancelButton={false}
-        showConfirmButton={true}
-        confirmText="Ok"
-        confirmButtonStyle={styles.buttonstyle}
-        cancelButtonStyle={styles.buttonstyle}
-        confirmButtonTextStyle={{
-          textAlign: 'center',
-          color: color?.textPrimaryColor,
-          fontSize: hp('2.2%'),
-        }}
-        titleStyle={{
-          color: color.textPrimaryColor,
-          textAlign: 'center',
-          fontWeight: 'bold',
-        }}
-        messageStyle={{color: 'gray', textAlign: 'center', color: 'black'}}
-        onConfirmPressed={() => {
-          setALertState(false);
-        }}
-      />
-    );
-  };
+
   const {email, password} = loginUser;
   const updateState = data => setLoginUser(() => ({...loginUser, ...data}));
   // Focused handler
@@ -172,9 +132,10 @@ const LoginScreen = ({route, navigation}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
       style={styles.container}>
+      <StatusBar hidden={false} barStyle={'dark-content'} />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
-          source={require('../../images/Loginogo.png')}
+          source={require('../../../images/Loginogo.png')}
           style={styles.topImage}
           resizeMode="contain"
         />
@@ -222,13 +183,20 @@ const LoginScreen = ({route, navigation}) => {
             onValueChange={newValue => setToggleCheckBox(newValue)}
           />
           <Text style={styles.rememberText}>Remember me</Text>
-          <TouchableOpacity style={{marginLeft: 'auto'}}>
+          <TouchableOpacity
+            style={{marginLeft: 'auto'}}
+            onPress={() => navigation.navigate('ForgetScreen')}>
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('MybottomTabs')}
+          onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Login'}
+          style={{marginTop: hp('2')}}
+        />
+        <ButtonThemeComp
+          onPress={() => navigation.navigate('CaptionBottomNavigation')}
+          text={'Caption Login'}
           style={{marginTop: hp('2')}}
         />
       </ScrollView>

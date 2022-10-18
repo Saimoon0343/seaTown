@@ -1,35 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Platform, Dimensions, StyleSheet} from 'react-native';
-import {screens} from '../screens/index';
+import {captionScreens} from '../screens/CaptionScreens/index';
 import * as Animatable from 'react-native-animatable';
 import {color} from '../components/color';
+
 const Tab = createBottomTabNavigator();
-function GuiderBottomNavigation() {
+function CaptionBottomNavigation() {
   return (
     <Tab.Navigator
-      initialRouteName="GuiderHomeScreen"
+      initialRouteName="HomeScreen"
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: color.white,
-        tabBarInactiveTintColor: 'transparent',
+        tabBarActiveTintColor: color.textPrimaryColor,
+        tabBarInactiveTintColor: 'gray',
         headerShown: false,
-        tabBarActiveBackgroundColor: color.bottomBarColor,
-        tabBarInactiveBackgroundColor: color.bottomBarColor,
+        tabBarActiveBackgroundColor: color.white,
+        tabBarInactiveBackgroundColor: color.white,
         tabBarHideOnKeyboard: true,
         swipeEnabled: true,
         animationEnabled: true,
         tabBarStyle: {
-          height: hp('8'),
+          height: hp('10'),
           paddingBottom: hp('0'),
-          bottom: Platform.OS == 'ios' ? hp('4') : hp('2'),
-          width: wp('30'),
+          // bottom: Platform.OS == 'ios' ? hp('4') : hp('2'),
+          width: wp('100'),
           alignSelf: 'center',
-          borderRadius: Platform.OS == 'android' ? 10 : 20,
+          // borderRadius: Platform.OS == 'android' ? 10 : 20,
           overflow: 'hidden',
         },
       })}>
@@ -41,23 +44,18 @@ function GuiderBottomNavigation() {
               animation="fadeInUpBig"
               direction={'normal'}
               delay={200}>
-              <Ionicons
-                name={color == '#ffff' ? 'home' : 'home-outline'}
-                color={'white'}
-                size={hp('3')}
-              />
+              <Ionicons name={'home-outline'} color={color} size={hp('3')} />
             </Animatable.View>
           ),
           title: 'Home',
           tabBarLabelStyle: {
-            fontSize: 15,
-            marginBottom: hp('1'),
+            display: 'none',
           },
         }}
-        component={screens.GuiderHomeScreen}
+        component={captionScreens.GuiderHomeScreen}
       />
-      {/* <Tab.Screen
-        name="userScreen"
+      <Tab.Screen
+        name="GuiderBookingScreen"
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Animatable.View
@@ -65,24 +63,42 @@ function GuiderBottomNavigation() {
               direction={'normal'}
               delay={300}>
               <Ionicons
-                name={color == '#ffff' ? 'person' : 'person-outline'}
-                color={'white'}
+                name={'calendar-outline'}
+                color={color}
                 size={hp('3')}
               />
             </Animatable.View>
           ),
-          title: 'Profile',
+          title: '',
           tabBarLabelStyle: {
-            fontSize: 15,
-            marginBottom: hp('1'),
+            display: 'none',
           },
         }}
-        component={screens.userScreen}
-      /> */}
+        component={captionScreens.GuiderBookingScreen}
+      />
+
+      <Tab.Screen
+        name="GuiderProfileScreen"
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Animatable.View
+              animation="fadeInRightBig"
+              direction={'normal'}
+              delay={300}>
+              <Ionicons name={'person-outline'} color={color} size={hp('3')} />
+            </Animatable.View>
+          ),
+          title: '',
+          tabBarLabelStyle: {
+            display: 'none',
+          },
+        }}
+        component={captionScreens.GuiderProfileScreen}
+      />
     </Tab.Navigator>
   );
 }
-export default GuiderBottomNavigation;
+export default CaptionBottomNavigation;
 
 const styles = StyleSheet.create({
   cartCircle: {
@@ -110,7 +126,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     borderWidth: 2,
-    borderColor: 'white',
+    // borderColor: color,
   },
   badgeContainer: {
     justifyContent: 'center',

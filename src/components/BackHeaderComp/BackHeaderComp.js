@@ -16,7 +16,12 @@ export const BackHeaderComp = props => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Ionicons name="arrow-back" color={'black'} size={hp('3')} />
+        <Ionicons
+          onPress={() => props?.onPress()}
+          name="arrow-back"
+          color={'black'}
+          size={hp('3')}
+        />
       </View>
       <Text style={{color: 'black', fontSize: hp('2'), fontWeight: 'bold'}}>
         {props.heading}

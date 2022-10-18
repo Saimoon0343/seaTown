@@ -3,7 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '../../components/color';
+import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
   requestButton: {

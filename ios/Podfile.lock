@@ -382,11 +382,15 @@ PODS:
     - React-Core
   - RNCCheckbox (0.5.12):
     - React-Core
-  - RNCMaskedView (0.1.11):
-    - React
+  - RNCClipboard (1.11.1):
+    - React-Core
+  - RNCMaskedView (0.2.8):
+    - React-Core
   - RNScreens (3.18.1):
     - React-Core
     - React-RCTImage
+  - RNSVG (13.4.0):
+    - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
   - SocketRocket (0.6.0)
@@ -458,8 +462,10 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
-  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
+  - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -558,10 +564,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCCheckbox:
     :path: "../node_modules/@react-native-community/checkbox"
+  RNCClipboard:
+    :path: "../node_modules/@react-native-clipboard/clipboard"
   RNCMaskedView:
-    :path: "../node_modules/@react-native-community/masked-view"
+    :path: "../node_modules/@react-native-masked-view/masked-view"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -619,8 +629,10 @@ SPEC CHECKSUMS:
   ReactCommon: 1209130f460e4aa9d255ddc75fa0a827ebf93dfb
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
   RNCCheckbox: ed1b4ca295475b41e7251ebae046360a703b6eb5
-  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
+  RNCClipboard: 2834e1c4af68697089cdd455ee4a4cdd198fa7dd
+  RNCMaskedView: bc0170f389056201c82a55e242e5d90070e18e5a
   RNScreens: 1b7bb502dac62cc4cf01b94bea591c8da275132f
+  RNSVG: 07dbd870b0dcdecc99b3a202fa37c8ca163caec2
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 043f8eb97345d0171f27fead4d1849cacf0472a5

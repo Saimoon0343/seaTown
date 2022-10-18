@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {screens} from '../screens';
-import MybottomTabs from './bottomnavigation';
+import {screens} from '../screens/UserScreens/index';
+import UserBottomnavigation from './UserBottomnavigation';
 import {useSelector} from 'react-redux';
-import GuiderBottomNavigation from './GuiderBottomNavigation';
-
+import CaptionBottomNavigation from './CaptionBottomNavigation';
+import {captionScreens} from '../screens/CaptionScreens/index';
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigatior() {
@@ -33,10 +33,31 @@ export default function StackNavigatior() {
         <>
           <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
           <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
-          <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
+          <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
+          <Stack.Screen
+            name="ResetPasswordScreen"
+            component={screens.ResetPasswordScreen}
+          />
+          <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
+          <Stack.Screen
+            name="ServicesDetailsScreen"
+            component={screens.ServicesDetailsScreen}
+          />
+          <Stack.Screen
+            name="UserBottomnavigation"
+            component={UserBottomnavigation}
+          />
+          <Stack.Screen
+            name="CaptionBottomNavigation"
+            component={CaptionBottomNavigation}
+          />
           <Stack.Screen
             name="NotificationScreen"
             component={screens.NotificationScreen}
+          />
+          <Stack.Screen
+            name="BookingDetailsScreen"
+            component={captionScreens.BookingDetailsScreen}
           />
         </>
         {/* )} */}

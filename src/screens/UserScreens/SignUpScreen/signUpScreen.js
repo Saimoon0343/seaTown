@@ -2,40 +2,28 @@ import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  ImageBackground,
   ScrollView,
   Image,
   Keyboard,
-  TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {TextInputCom} from '../../components/TextInputCompenent/textInputCom';
-import {ApiGet, ApiPost, ApiPostFormData} from '../../config/helperFunction';
-import {CountryNameUrl, resendEmailUrl, SignUpUrl} from '../../config/Urls';
+import {ApiGet, ApiPost, ApiPostFormData} from '../../../config/helperFunction';
+import {CountryNameUrl, resendEmailUrl, SignUpUrl} from '../../../config/Urls';
 import {styles} from './styles';
-import {ArrowButtonCom} from '../../components/ArrowButtonComponenet/arrowButtonCom';
-import {color} from '../../components/color';
-import {Picker} from '@react-native-picker/picker';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {globalStyles} from '../../config/globalStyles';
 import {
   errorMessage,
   successMessage,
-} from '../../components/NotificationMessage';
-import * as Animatable from 'react-native-animatable';
+} from '../../../components/NotificationMessage';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {SkypeIndicator} from 'react-native-indicators';
-import {ArrowButtonComponenetDup} from '../../components/ArrowButtonComponenetDup/ArrowButtonComponenetDup';
-import {ButtonThemeComp} from '../../components/ButtonThemeComp/ButtonThemeComp';
-import {BottomTextComp} from '../../components/BottomTextComp/BottomTextComp';
+import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
+import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp';
 import CheckBox from '@react-native-community/checkbox';
-import {LoginInputComp} from '../../components/LoginInputComp/LoginInputComp';
-import {TextHeadingCom} from '../../components/TextHeadingCom/TextHeadingCom';
+import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
+import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 
 export default function SignUpScreen({navigation}) {
   const [isKeyboardVisible, setKeyboardVisible] = useState(hp('45'));
@@ -210,7 +198,7 @@ export default function SignUpScreen({navigation}) {
       style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
-          source={require('../../images/Loginogo.png')}
+          source={require('../../../images/Loginogo.png')}
           style={styles.topImage}
           resizeMode="contain"
         />
@@ -296,7 +284,7 @@ export default function SignUpScreen({navigation}) {
       <BottomTextComp
         onPress={() => navigation.navigate('SignUpScreen')}
         note={"Don't have account ? "}
-        heading={'Sing Up'}
+        heading={'Sign Up'}
       />
     </KeyboardAvoidingView>
   );
