@@ -59,6 +59,10 @@ export default function StackNavigatior() {
             name="BookingDetailsScreen"
             component={captionScreens.BookingDetailsScreen}
           />
+          <Stack.Screen
+            name="UpadateProfileScreen"
+            component={captionScreens.UpadateProfileScreen}
+          />
         </>
         {/* )} */}
         {/* <Stack.Screen

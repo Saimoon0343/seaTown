@@ -12,7 +12,7 @@ export const color = {
   themeColorDark: '#BCAFAF',
   lightGrayColor: '#E5E9EB',
   // lightGrayColor: '#E0E0E0',
-  lightBlueColor: ' #90A1B6',
+  lightBlueColor: '#90A1B6',
   textColor: '#434345',
   borderThirdColor: '#F0F0F0',
   white: '#ffff',
@@ -30,4 +30,5 @@ export const color = {
   darkGreen: '#00712f',
   lightPurple: '#D8CCE8',
   pendingText: '#C5CA5B',
+  inputColor: '#DDE4EA',
 };
