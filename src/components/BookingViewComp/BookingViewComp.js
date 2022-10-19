@@ -18,8 +18,9 @@ import {color} from '../color';
 export const BookingViewComp = props => {
   let statusValue = {
     Completed: 'green',
-    Pending: color.pendingText,
+    'In Progress': color.textPrimaryColor,
     Cancelled: 'red',
+    Schedule: color.yellowTxtColor,
   };
 
   const checkStatus = status => {
@@ -41,7 +42,11 @@ export const BookingViewComp = props => {
           <Text style={styles.dateText}>21 feb 2022 | 12:24 AM</Text>
         </View>
         <View style={styles.rightView}>
-          <Text style={{...styles.statusText, color: checkStatus(data.status)}}>
+          <Text
+            style={{
+              ...styles.statusText,
+              color: checkStatus(data.status),
+            }}>
             {data.status}{' '}
           </Text>
         </View>
@@ -103,7 +108,7 @@ export const styles = StyleSheet.create({
   },
   rightView: {width: wp('20'), marginTop: hp('2')},
   statusText: {
-    fontSize: hp('1.6'),
+    fontSize: hp('1.5'),
     marginRight: wp('2'),
     textAlign: 'right',
   },

@@ -19,6 +19,7 @@ import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom'
 import {CircleImage} from '../../../components/CircleImage/CircleImage';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 import StarRating from 'react-native-star-rating-widget';
+import {ActionButtonComp} from '../../../components/ActionButtonComp/ActionButtonComp';
 
 const BookingDetailsScreen = ({route, navigation}) => {
   const item = route.params.item;
@@ -37,13 +38,65 @@ const BookingDetailsScreen = ({route, navigation}) => {
   };
   const InProgressView = () => {
     return (
-      <View style={styles.progressView}>
-        <CommonButtonComp
-          viewStyle={{backgroundColor: color.lightBlueColor}}
-          textStyle={{color: 'black'}}
-          text={'Cancel'}
+      <View>
+        <TextHeadingCom
+          heading="User Details"
+          style={{
+            marginTop: hp('6'),
+            marginLeft: hp('2.5'),
+            fontWeight: '600',
+          }}
         />
-        <CommonButtonComp text={'Start'} />
+        <View style={{...styles.userView}}>
+          <CircleImage
+            styles={{
+              width: Dimensions.get('window').width * 0.12,
+              height: Dimensions.get('window').width * 0.12,
+            }}
+            image={item?.innerImage}
+          />
+          <View>
+            <TextHeadingCom
+              heading="Jaylon Konsgraad"
+              style={{
+                marginLeft: hp('1'),
+                fontWeight: '500',
+                fontSize: hp('1.8'),
+              }}
+            />
+            <Text
+              style={{
+                color: color.themeColorDark,
+                marginLeft: hp('1'),
+                fontSize: hp('1.7'),
+              }}>
+              35.5 miles away
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: wp('43'),
+              marginLeft: hp('1'),
+            }}>
+            <ActionButtonComp image={require('../../../images/Vector.png')} />
+            <ActionButtonComp image={require('../../../images/Chat.png')} />
+            <ActionButtonComp image={require('../../../images/Call.png')} />
+          </View>
+        </View>
+        <View style={styles.progressView}>
+          <CommonButtonComp
+            viewStyle={{backgroundColor: '#F3D2D2'}}
+            textStyle={{color: 'red'}}
+            text={'Cancel'}
+          />
+          <CommonButtonComp
+            viewStyle={{backgroundColor: color.alertBackgroundColor}}
+            textStyle={{color: 'white'}}
+            text={'Mark as completed'}
+          />
+        </View>
       </View>
     );
   };
@@ -97,6 +150,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
   const CompletedView = () => {
     return (
       <View>
+        <UserDetailsView />
         <ReviewView />
         <CommonButtonComp
           text="Create Work Order"
@@ -107,30 +161,76 @@ const BookingDetailsScreen = ({route, navigation}) => {
   };
   const CancellationView = () => {
     return (
-      <View style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}>
-        <TextHeadingCom
-          heading="Cancellation Reason"
-          style={{
-            fontWeight: 'normal',
-            fontSize: hp('1.8'),
-          }}
-        />
-        <TextHeadingCom
-          heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          style={{
-            fontWeight: 'normal',
-            marginTop: hp('1'),
-            color: 'red',
-            fontSize: hp('1.5'),
-          }}
+      <>
+        <UserDetailsView />
+        <View
+          style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}>
+          <TextHeadingCom
+            heading="Cancellation Reason"
+            style={{
+              fontWeight: 'normal',
+              fontSize: hp('1.8'),
+            }}
+          />
+          <TextHeadingCom
+            heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            style={{
+              fontWeight: 'normal',
+              marginTop: hp('1'),
+              color: 'red',
+              fontSize: hp('1.5'),
+            }}
+          />
+        </View>
+      </>
+    );
+  };
+  const ScheduleView = () => {
+    return (
+      <View>
+        <UserDetailsView />
+        <CommonButtonComp
+          text="Start"
+          viewStyle={{width: wp('90'), marginTop: hp('3')}}
         />
       </View>
     );
   };
+  const UserDetailsView = () => {
+    return (
+      <>
+        <TextHeadingCom
+          heading="User Details"
+          style={{
+            marginTop: hp('6'),
+            marginLeft: hp('2.5'),
+            fontWeight: '600',
+          }}
+        />
+        <View style={styles.userView}>
+          <CircleImage
+            styles={{
+              width: Dimensions.get('window').width * 0.12,
+              height: Dimensions.get('window').width * 0.12,
+            }}
+            image={item?.innerImage}
+          />
+          <TextHeadingCom
+            heading="Jaylon Konsgraad"
+            style={{
+              marginLeft: hp('1'),
+              fontWeight: '500',
+            }}
+          />
+        </View>
+      </>
+    );
+  };
   const checkStatus = {
     Completed: CompletedView(),
-    Pending: InProgressView(),
+    'In Progress': InProgressView(),
     Cancelled: CancellationView(),
+    Schedule: ScheduleView(),
   };
   const CheckStatus = status => {
     return checkStatus[status];
@@ -200,30 +300,6 @@ const BookingDetailsScreen = ({route, navigation}) => {
           magna quisque quisque. Etiam eu quis mattis mus accumsan varius
           egestas hendrerit vitae.
         </Text>
-        <TextHeadingCom
-          heading="User Details"
-          style={{
-            marginTop: hp('6'),
-            marginLeft: hp('2.5'),
-            fontWeight: '600',
-          }}
-        />
-        <View style={styles.userView}>
-          <CircleImage
-            styles={{
-              width: Dimensions.get('window').width * 0.12,
-              height: Dimensions.get('window').width * 0.12,
-            }}
-            image={item?.innerImage}
-          />
-          <TextHeadingCom
-            heading="Jaylon Konsgraad"
-            style={{
-              marginLeft: hp('1'),
-              fontWeight: '500',
-            }}
-          />
-        </View>
         {CheckStatus(item.status)}
         {/* <CancellationView /> */}
       </ScrollView>

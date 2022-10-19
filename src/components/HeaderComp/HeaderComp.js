@@ -5,6 +5,7 @@ import {
 } from 'react-native-responsive-screen';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 
 export const HeaderComp = props => {
   return (
@@ -36,6 +37,15 @@ export const HeaderComp = props => {
             size={hp('3')}
             style={{marginRight: wp('3')}}
             onPress={() => props.searchPress()}
+          />
+        )}
+        {props.edit && (
+          <Feather
+            name="edit-3"
+            color={'black'}
+            size={hp('3')}
+            style={{marginRight: wp('3')}}
+            onPress={() => props.editPress()}
           />
         )}
       </View>
