@@ -11,7 +11,7 @@ import {styles} from './styles';
 import {BookingViewComp} from '../../../components/BookingViewComp/BookingViewComp';
 import {ServicesCounterComp} from '../../../components/ServicesCounterComp/ServicesCounterComp';
 
-const GuiderBookingScreen = () => {
+const GuiderBookingScreen = ({navigation}) => {
   const [bookings, setBookings] = useState([
     {
       id: 1,

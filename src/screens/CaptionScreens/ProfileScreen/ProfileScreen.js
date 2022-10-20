@@ -74,90 +74,92 @@ const GuiderProfileScreen = ({navigation}) => {
     );
   };
   return (
-    <ScrollView>
+    <>
       <HeaderComp
         editPress={() => navigation.navigate('UpadateProfileScreen')}
         heading={'Profile'}
         edit={true}
       />
-      <CircleImage
-        image={require('../../../images/Rectangle4307.png')}
-        styles={{
-          width: Dimensions.get('window').width * 0.4,
-          height: Dimensions.get('window').width * 0.4,
-          alignSelf: 'center',
-          marginTop: hp('2'),
-        }}
-      />
-      <Text style={styles.captionText}>Caption</Text>
-      <TextHeadingCom
-        heading="Brandon Westervelt"
-        style={{marginTop: hp('2'), textAlign: 'center'}}
-      />
-      <View style={styles.mileText}>
-        <Ionicons
-          name="location-outline"
-          size={hp('2')}
-          color={color.lightBlueColor}
+      <ScrollView>
+        <CircleImage
+          image={require('../../../images/Rectangle4307.png')}
+          styles={{
+            width: Dimensions.get('window').width * 0.4,
+            height: Dimensions.get('window').width * 0.4,
+            alignSelf: 'center',
+            marginTop: hp('2'),
+          }}
         />
-        <Text style={styles.dateTimeText}>7.5 mils</Text>
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Feather
-          style={styles.image}
-          name={'phone'}
-          size={20}
-          color={color.textPrimaryColor}
+        <Text style={styles.captionText}>Caption</Text>
+        <TextHeadingCom
+          heading="Brandon Westervelt"
+          style={{marginTop: hp('2'), textAlign: 'center'}}
         />
-        <Text style={{...styles.text}}>5537-334543-345</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Ionicons
-          style={styles.image}
-          name={'mail-outline'}
-          size={20}
-          color={color.textPrimaryColor}
+        <View style={styles.mileText}>
+          <Ionicons
+            name="location-outline"
+            size={hp('2')}
+            color={color.lightBlueColor}
+          />
+          <Text style={styles.dateTimeText}>7.5 mils</Text>
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Feather
+            style={styles.image}
+            name={'phone'}
+            size={20}
+            color={color.textPrimaryColor}
+          />
+          <Text style={{...styles.text}}>5537-334543-345</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Ionicons
+            style={styles.image}
+            name={'mail-outline'}
+            size={20}
+            color={color.textPrimaryColor}
+          />
+          <Text style={{...styles.text}}>alfoneso_vac@gmail.com</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Feather
+            style={styles.image}
+            name={'clock'}
+            size={20}
+            color={color.textPrimaryColor}
+          />
+          <Text style={{...styles.text}}>9AM - 5PM</Text>
+        </TouchableOpacity>
+        <TextHeadingCom
+          heading="Experiences"
+          style={{marginTop: hp('3'), marginLeft: wp('5')}}
         />
-        <Text style={{...styles.text}}>alfoneso_vac@gmail.com</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Feather
-          style={styles.image}
-          name={'clock'}
-          size={20}
-          color={color.textPrimaryColor}
+        <ExperienceView
+          title="Al Suwaidi Marine"
+          work="Boat Caption"
+          time="2021 - 2022"
         />
-        <Text style={{...styles.text}}>9AM - 5PM</Text>
-      </TouchableOpacity>
-      <TextHeadingCom
-        heading="Experiences"
-        style={{marginTop: hp('3'), marginLeft: wp('5')}}
-      />
-      <ExperienceView
-        title="Al Suwaidi Marine"
-        work="Boat Caption"
-        time="2021 - 2022"
-      />
-      <ExperienceView
-        title="Al Aweidha Marine Services"
-        work="Boat Caption"
-        time="2016 - 2022"
-      />
-      <TextHeadingCom
-        heading="Document"
-        style={{marginTop: hp('3'), marginLeft: wp('5')}}
-      />
-      <DocumentView
-        image={require('../../../images/doc.png')}
-        title={'Emirates ID'}
-        work={'1.59mb'}
-      />
-      <DocumentView
-        image={require('../../../images/pdf.png')}
-        title={'Dubai Marine license'}
-        work={'55kb'}
-      />
-    </ScrollView>
+        <ExperienceView
+          title="Al Aweidha Marine Services"
+          work="Boat Caption"
+          time="2016 - 2022"
+        />
+        <TextHeadingCom
+          heading="Document"
+          style={{marginTop: hp('3'), marginLeft: wp('5')}}
+        />
+        <DocumentView
+          image={require('../../../images/doc.png')}
+          title={'Emirates ID'}
+          work={'1.59mb'}
+        />
+        <DocumentView
+          image={require('../../../images/pdf.png')}
+          title={'Dubai Marine license'}
+          work={'55kb'}
+        />
+      </ScrollView>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -23,6 +23,7 @@ import {ActionButtonComp} from '../../../components/ActionButtonComp/ActionButto
 
 const BookingDetailsScreen = ({route, navigation}) => {
   const item = route.params.item;
+  const [TrackViewState, setTrackViewState] = useState(false);
   const CoordenatesView = props => {
     return (
       <View style={{...styles.coordenatesView, ...props?.style}}>
@@ -155,6 +156,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
         <CommonButtonComp
           text="Create Work Order"
           viewStyle={{width: wp('90'), marginTop: hp('3')}}
+          onPress={() => navigation.navigate('CreateWorkOrderScreen')}
         />
       </View>
     );
@@ -192,7 +194,32 @@ const BookingDetailsScreen = ({route, navigation}) => {
         <CommonButtonComp
           text="Start"
           viewStyle={{width: wp('90'), marginTop: hp('3')}}
+          onPress={() => setTrackViewState(true)}
         />
+      </View>
+    );
+  };
+  const TrackView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={styles.trackInnerView}>
+          <Ionicons
+            name="close-sharp"
+            color={color.lightBlueColor}
+            size={hp('3')}
+            onPress={() => setTrackViewState(false)}
+            style={{
+              alignSelf: 'flex-end',
+              marginRight: wp('2'),
+            }}
+          />
+          <Image
+            source={require('../../../images/locationImage.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          />
+          <CommonButtonComp viewStyle={{width: wp('70')}} text={'Track User'} />
+        </View>
       </View>
     );
   };
@@ -303,6 +330,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
         {CheckStatus(item.status)}
         {/* <CancellationView /> */}
       </ScrollView>
+      <TrackView />
     </View>
   );
 };

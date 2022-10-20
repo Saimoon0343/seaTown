@@ -63,6 +63,10 @@ export default function StackNavigatior() {
             name="UpadateProfileScreen"
             component={captionScreens.UpadateProfileScreen}
           />
+          <Stack.Screen
+            name="CreateWorkOrderScreen"
+            component={captionScreens.CreateWorkOrderScreen}
+          />
         </>
         {/* )} */}
         {/* <Stack.Screen
