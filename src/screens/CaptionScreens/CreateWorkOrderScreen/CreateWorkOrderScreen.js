@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, TextInput, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, TextInput, ScrollView} from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {
   widthPercentageToDP as wp,
@@ -12,8 +12,15 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Divider} from 'react-native-paper';
 import TextButtonComp from '../../../components/TextButtonComp/TextButtonComp';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
-
+import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
+import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 const CreateWorkOrderScreen = ({navigation}) => {
+  const [checkRenderView, setcheckRenderView] = useState({
+    TrackViewState: false,
+  });
+  const {TrackViewState} = checkRenderView;
+  const updateState = data =>
+    setcheckRenderView(() => ({...checkRenderView, ...data}));
   const ReqiuredView = props => {
     var width = props.width ?? '88';
     return (
@@ -35,6 +42,38 @@ const CreateWorkOrderScreen = ({navigation}) => {
     );
   };
 
+  const ServicesRequestView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView}}>
+          <Ionicons
+            name="close-sharp"
+            color={color.lightBlueColor}
+            size={hp('3')}
+            onPress={() => updateState({TrackViewState: false})}
+            style={{
+              alignSelf: 'flex-end',
+              marginRight: wp('2'),
+            }}
+          />
+          <Image
+            source={require('../../../images/yellowTick.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          />
+          <TextHeadingCom
+            heading="Your Work Order has been Submit to Admin!"
+            style={{
+              marginTop: hp('0.8'),
+              width: wp('70'),
+
+              textAlign: 'center',
+            }}
+          />
+        </View>
+      </View>
+    );
+  };
   return (
     <>
       <BackHeaderComp
@@ -107,12 +146,13 @@ const CreateWorkOrderScreen = ({navigation}) => {
             name={'plus'}
           />
           <ButtonThemeComp
-            onPress={() => console.log('lsakdlk')}
+            onPress={() => updateState({TrackViewState: true})}
             style={{marginTop: wp('5')}}
             text={'Send To Admin'}
           />
         </View>
       </ScrollView>
+      {TrackViewState && ServicesRequestView()}
     </>
   );
 };

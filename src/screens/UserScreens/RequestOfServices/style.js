@@ -91,9 +91,11 @@ export const styles = StyleSheet.create({
     // alignItems: 'center',
     height: hp('15'),
     width: wp('90'),
+    paddingTop: hp('1'),
   },
   ImageBackgroundContainer: {
     width: wp('25'),
     height: hp('10'),
   },
+  dateTimeViewStyle: {flexDirection: 'row', justifyContent: 'space-between'},
 });

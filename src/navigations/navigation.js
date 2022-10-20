@@ -14,6 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Home from '../screens/Home';
 import About from '../screens/About';
 import Settings from '../screens/Settings';
+import PrivacyPolicy from '../screens/PrivacyPolicy';
 
 import CaptionBottomNavigation from './CaptionBottomNavigation';
 import {captionScreens} from '../screens/CaptionScreens/index';
@@ -86,7 +87,6 @@ const StackNavigatior = ({style, navigation}) => {
           component={screens.ResetPasswordScreen}
         />
         <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
-        {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Settings" component={Settings} />
@@ -116,62 +116,14 @@ const StackNavigatior = ({style, navigation}) => {
           component={screens.RequestOfServices}
         />
         <Stack.Screen
+          name="UpadateProfileScreen"
+          component={captionScreens.UpadateProfileScreen}
+        />
+        <Stack.Screen
           name="CreateWorkOrderScreen"
           component={captionScreens.CreateWorkOrderScreen}
         />
-        {/*         
-        <Stack.Screen
-          <Stack.Screen
-            name="UpadateProfileScreen"
-            component={captionScreens.UpadateProfileScreen}
-          />
-        </>
-        {/* )} */}
-        {/* <Stack.Screen
-          name="CurrencyMethodScreen"
-          component={screens.CurrencyMethodScreen}
-        />
-        <Stack.Screen
-          name="searchBarScreen"
-          component={screens.SearchBarScreen}
-        />
-        <Stack.Screen name="PackageScreen" component={screens.PackageScreen} />
-        <Stack.Screen
-          name="PackageDetailScreen"
-          component={screens.PackageDetailScreen}
-        />
-        <Stack.Screen name="ProfileScreen" component={screens.ProfileScreen} />
-        <Stack.Screen
-          name="ThankYouScreen"
-          component={screens.ThankYouScreen}
-        />
-        <Stack.Screen name="ReviewScreen" component={screens.ReviewScreen} />
-        <Stack.Screen
-          name="WriteReviewScreen"
-          component={screens.WriteReviewScreen}
-        />
-        <Stack.Screen name="StripeScreen" component={screens.StripeScreen} />
-        <Stack.Screen
-          name="OrderDetailsScreen"
-          component={screens.OrderDetailsScreen}
-        />
-        <Stack.Screen name="MapViewScreen" component={screens.MapViewScreen} />
-        <Stack.Screen
-          name="GuiderPackageDetailScreen"
-          component={screens.GuiderPackageDetailScreen}
-        />
-        <Stack.Screen
-          name="GuiderMapViewScreen"
-          component={screens.GuiderMapViewScreen}
-        />
-        <Stack.Screen
-          name="EtherumPaynemtScreen"
-          component={screens.EtherumPaynemtScreen}
-        />
-        <Stack.Screen
-          name="PendingPackageScreen"
-          component={screens.PendingPackageScreen}
-        />  */}
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       </Stack.Navigator>
     </Animated.View>
   );
@@ -179,6 +131,7 @@ const StackNavigatior = ({style, navigation}) => {
 
 export default () => {
   const [progress, setProgress] = useState(new Animated.Value(0));
+  console.log(1002, progress);
   const scale = Animated.interpolateNode(progress, {
     inputRange: [0, 1],
     outputRange: [1, 0.8],

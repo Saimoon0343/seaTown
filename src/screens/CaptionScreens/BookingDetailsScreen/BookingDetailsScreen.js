@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
+  TextInput,
 } from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {
@@ -20,10 +21,26 @@ import {CircleImage} from '../../../components/CircleImage/CircleImage';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 import StarRating from 'react-native-star-rating-widget';
 import {ActionButtonComp} from '../../../components/ActionButtonComp/ActionButtonComp';
+import CheckBox from '@react-native-community/checkbox';
 
 const BookingDetailsScreen = ({route, navigation}) => {
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [number, onChangeNumber] = React.useState(null);
+
   const item = route.params.item;
-  const [TrackViewState, setTrackViewState] = useState(false);
+  const [checkRenderView, setcheckRenderView] = useState({
+    TrackViewState: false,
+    ServicesRequestCompleted: false,
+    BookingCancellReason: false,
+  });
+  const {
+    TrackViewState,
+    ServicesRequestCompleted,
+    BookingCancellReason,
+  } = checkRenderView;
+  const updateState = data =>
+    setcheckRenderView(() => ({...checkRenderView, ...data}));
+
   const CoordenatesView = props => {
     return (
       <View style={{...styles.coordenatesView, ...props?.style}}>
@@ -93,11 +110,13 @@ const BookingDetailsScreen = ({route, navigation}) => {
             viewStyle={{backgroundColor: '#F3D2D2'}}
             textStyle={{color: 'red'}}
             text={'Cancel'}
+            onPress={() => updateState({BookingCancellReason: true})}
           />
           <CommonButtonComp
             viewStyle={{backgroundColor: color.alertBackgroundColor}}
             textStyle={{color: 'white'}}
             text={'Mark as completed'}
+            onPress={() => updateState({ServicesRequestCompleted: true})}
           />
         </View>
       </View>
@@ -197,7 +216,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
         <CommonButtonComp
           text="Start"
           viewStyle={{width: wp('90'), marginTop: hp('3')}}
-          onPress={() => setTrackViewState(true)}
+          onPress={() => updateState({TrackViewState: true})}
         />
       </View>
     );
@@ -210,7 +229,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
             name="close-sharp"
             color={color.lightBlueColor}
             size={hp('3')}
-            onPress={() => setTrackViewState(false)}
+            onPress={() => updateState({TrackViewState: false})}
             style={{
               alignSelf: 'flex-end',
               marginRight: wp('2'),
@@ -221,7 +240,129 @@ const BookingDetailsScreen = ({route, navigation}) => {
             resizeMode={'contain'}
             style={{alignSelf: 'center'}}
           />
-          <CommonButtonComp viewStyle={{width: wp('70')}} text={'Track User'} />
+          <CommonButtonComp
+            onPress={() => updateState({TrackViewState: false})}
+            viewStyle={{width: wp('70')}}
+            text={'Track User'}
+          />
+        </View>
+      </View>
+    );
+  };
+  const ServicesRequestView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView, height: hp('40')}}>
+          <Ionicons
+            name="close-sharp"
+            color={color.lightBlueColor}
+            size={hp('3')}
+            onPress={() => updateState({ServicesRequestCompleted: false})}
+            style={{
+              alignSelf: 'flex-end',
+              marginRight: wp('2'),
+            }}
+          />
+          <Image
+            source={require('../../../images/yellowTick.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          />
+          <TextHeadingCom
+            heading="Your Service Request has been Completed!"
+            style={{textAlign: 'center'}}
+          />
+          <CommonButtonComp
+            onPress={() => {
+              updateState({ServicesRequestCompleted: false});
+              navigation.navigate('CreateWorkOrderScreen');
+            }}
+            viewStyle={{width: wp('70'), marginBottom: hp('2')}}
+            text={'Create Work Order'}
+          />
+        </View>
+      </View>
+    );
+  };
+  const BookingCancellReasonView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView, height: hp('60')}}>
+          <View style={styles.centerViewTopText}>
+            <TextHeadingCom
+              style={{
+                fontSize: hp('1.9'),
+                width: wp('60'),
+                paddingLeft: wp('3'),
+              }}
+              heading="Select or type your reason for booking cancellation"
+            />
+            <Ionicons
+              name="close-sharp"
+              color={color.lightBlueColor}
+              size={hp('3')}
+              onPress={() => updateState({BookingCancellReason: false})}
+              style={{
+                marginRight: wp('2'),
+              }}
+            />
+          </View>
+          <View
+            style={{
+              height: hp('15'),
+              justifyContent: 'space-between',
+            }}
+          >
+            <View style={styles.rememberView}>
+              <CheckBox
+                disabled={false}
+                value={toggleCheckBox}
+                onValueChange={newValue => setToggleCheckBox(newValue)}
+              />
+              <Text style={styles.rememberText}>Unavailable</Text>
+            </View>
+            <View style={styles.rememberView}>
+              <CheckBox
+                disabled={false}
+                value={toggleCheckBox}
+                onValueChange={newValue => setToggleCheckBox(newValue)}
+              />
+              <Text style={styles.rememberText}>Transport Malfunction</Text>
+            </View>
+            <View style={styles.rememberView}>
+              <CheckBox
+                disabled={false}
+                value={toggleCheckBox}
+                onValueChange={newValue => setToggleCheckBox(newValue)}
+              />
+              <Text style={styles.rememberText}>Weather Condition</Text>
+            </View>
+          </View>
+          <TextInput
+            multiline
+            numberOfLines={10}
+            style={styles.input}
+            onChangeText={onChangeNumber}
+            value={number}
+            placeholder="Type your message"
+            keyboardType="numeric"
+          />
+
+          {/* <Text
+            style={{
+              textAlign: 'right',
+              marginTop: hp('0.5'),
+              color: color.themeColorDark,
+            }}>
+            0/500
+          </Text> */}
+          <CommonButtonComp
+            onPress={() => {
+              updateState({BookingCancellReason: false});
+            }}
+            viewStyle={{width: wp('70')}}
+            text={'Submit'}
+          />
         </View>
       </View>
     );
@@ -334,7 +475,10 @@ const BookingDetailsScreen = ({route, navigation}) => {
         {CheckStatus(item.status)}
         {/* <CancellationView /> */}
       </ScrollView>
-      {/* <TrackView /> */}
+
+      {TrackViewState && <TrackView />}
+      {ServicesRequestCompleted && <ServicesRequestView />}
+      {BookingCancellReason && <BookingCancellReasonView />}
     </View>
   );
 };

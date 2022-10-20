@@ -85,24 +85,28 @@ const HomeScreen = ({navigation}) => {
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />
         <View style={styles.serContainer}>
-        <TextHeadingCom
-          heading="Services"
-          style={{marginTop: hp('2'), marginLeft: hp('2')}}
-        />
-        <TouchableOpacity  onPress={()=>navigation.navigate('RequestOfServices')} style={styles.requestSmallButton}>
-          <Foundation
-            name="page-edit"
-            color={color.textPrimaryColor}
-            size={hp('3')}
+          <TextHeadingCom
+            heading="Services"
+            style={{marginTop: hp('2'), marginLeft: hp('2')}}
           />
-          <Text
-            style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}>
-            Request a service
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('RequestOfServices')}
+            style={styles.requestSmallButton}
+          >
+            <Foundation
+              name="page-edit"
+              color={color.textPrimaryColor}
+              size={hp('3')}
+            />
+            <Text
+              style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}
+            >
+              Request a service
+            </Text>
+          </TouchableOpacity>
         </View>
         <UserHomeServicesComp
-          onPress={() => navigates()}
+          onPress={item => navigates(item)}
           data={services}
           isloading={loading}
         />

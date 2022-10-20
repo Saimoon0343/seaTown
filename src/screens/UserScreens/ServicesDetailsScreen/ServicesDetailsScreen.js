@@ -8,6 +8,7 @@ import {
 
 const ServicesDetailsScreen = ({route, navigation}) => {
   const item = route.params.item;
+  console.log(5465465, item);
   return (
     <>
       <BackHeaderComp
@@ -27,7 +28,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             //   borderRadius: 10,
           }}
         />
-        <Text></Text>
+        <Text>fdasdfdsa</Text>
       </ScrollView>
     </>
   );

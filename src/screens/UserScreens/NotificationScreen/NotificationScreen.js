@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {NotificationComp} from '../../../components/NotificationComp/NotificationComp';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const NotificationScreen = ({navigation}) => {
   const [notification, setNotification] = useState([
@@ -57,7 +61,9 @@ const NotificationScreen = ({navigation}) => {
         onPress={() => navigation.goBack()}
         heading={'Notification'}
       />
-      <NotificationComp data={notification} />
+      <ScrollView contentContainerStyle={{paddingBottom: hp('15')}}>
+        <NotificationComp data={notification} />
+      </ScrollView>
     </View>
   );
 };

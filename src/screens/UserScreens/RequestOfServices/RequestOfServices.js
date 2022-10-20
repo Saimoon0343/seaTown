@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {styles} from './style';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
@@ -20,8 +20,10 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {color} from '../../../components/color';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 const RequestOfServices = ({navigation}) => {
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState(null);
+  const [text, onChangeText] = useState('Useless Text');
+  const [number, onChangeNumber] = useState(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum.',
+  );
 
   const CoordenatesView = props => {
     let width = props.width ?? '90';
@@ -33,8 +35,7 @@ const RequestOfServices = ({navigation}) => {
           ...props?.style,
           height: hp(height),
           width: wp(width),
-        }}
-      >
+        }}>
         <Text style={styles.leftText}>{props?.coordArea}</Text>
         <Text style={styles.rightText}>{props?.coordenates}</Text>
         {props.icoNotShow != true && (
@@ -56,7 +57,7 @@ const RequestOfServices = ({navigation}) => {
       <ScrollView contentContainerStyle={styles.container}>
         <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
         <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View style={styles.dateTimeViewStyle}>
           <CoordenatesView
             width={'40'}
             name={'calendar'}
@@ -75,7 +76,6 @@ const RequestOfServices = ({navigation}) => {
           coordArea={`Need Ice and Sunglases`}
           coordenates={''}
           icoNotShow={true}
-          //   name={''}
         />
         <TextInput
           multiline
@@ -83,7 +83,7 @@ const RequestOfServices = ({navigation}) => {
           style={styles.input}
           onChangeText={onChangeNumber}
           value={number}
-          placeholder="useless placeholder useless placeholder useless placeholder useless placeholder useless placeholder useless placeholder useless placeholder useless placeholder"
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum."
           keyboardType="numeric"
         />
 
@@ -92,16 +92,14 @@ const RequestOfServices = ({navigation}) => {
             textAlign: 'right',
             marginTop: hp('0.5'),
             color: color.themeColorDark,
-          }}
-        >
+          }}>
           0/500
         </Text>
         <View style={{flexDirection: 'row'}}>
           <ImageBackground
             resizeMode="contain"
             style={styles.ImageBackgroundContainer}
-            source={require('../../../images/image1.png')}
-          >
+            source={require('../../../images/image1.png')}>
             <MaterialIcons
               name="cancel"
               size={hp('2.5')}
@@ -117,8 +115,7 @@ const RequestOfServices = ({navigation}) => {
           <ImageBackground
             resizeMode="contain"
             style={styles.ImageBackgroundContainer}
-            source={require('../../../images/image2.png')}
-          >
+            source={require('../../../images/image2.png')}>
             <MaterialIcons
               name="cancel"
               size={hp('2.5')}
@@ -142,8 +139,7 @@ const RequestOfServices = ({navigation}) => {
         />
 
         <Text
-          style={{textAlign: 'center', width: wp('88'), marginTop: hp('1')}}
-        >
+          style={{textAlign: 'center', width: wp('88'), marginTop: hp('1')}}>
           *Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus
           velit arcu faucibus aliquet
         </Text>
