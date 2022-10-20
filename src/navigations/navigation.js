@@ -122,55 +122,6 @@ const StackNavigatior = ({style, navigation}) => {
           name="CreateWorkOrderScreen"
           component={captionScreens.CreateWorkOrderScreen}
         />
-        {/*         
-        <Stack.Screen
-        </>
-        {/* )} */}
-        {/* <Stack.Screen
-          name="CurrencyMethodScreen"
-          component={screens.CurrencyMethodScreen}
-        />
-        <Stack.Screen
-          name="searchBarScreen"
-          component={screens.SearchBarScreen}
-        />
-        <Stack.Screen name="PackageScreen" component={screens.PackageScreen} />
-        <Stack.Screen
-          name="PackageDetailScreen"
-          component={screens.PackageDetailScreen}
-        />
-        <Stack.Screen name="ProfileScreen" component={screens.ProfileScreen} />
-        <Stack.Screen
-          name="ThankYouScreen"
-          component={screens.ThankYouScreen}
-        />
-        <Stack.Screen name="ReviewScreen" component={screens.ReviewScreen} />
-        <Stack.Screen
-          name="WriteReviewScreen"
-          component={screens.WriteReviewScreen}
-        />
-        <Stack.Screen name="StripeScreen" component={screens.StripeScreen} />
-        <Stack.Screen
-          name="OrderDetailsScreen"
-          component={screens.OrderDetailsScreen}
-        />
-        <Stack.Screen name="MapViewScreen" component={screens.MapViewScreen} />
-        <Stack.Screen
-          name="GuiderPackageDetailScreen"
-          component={screens.GuiderPackageDetailScreen}
-        />
-        <Stack.Screen
-          name="GuiderMapViewScreen"
-          component={screens.GuiderMapViewScreen}
-        />
-        <Stack.Screen
-          name="EtherumPaynemtScreen"
-          component={screens.EtherumPaynemtScreen}
-        />
-        <Stack.Screen
-          name="PendingPackageScreen"
-          component={screens.PendingPackageScreen}
-        />  */}
       </Stack.Navigator>
     </Animated.View>
   );

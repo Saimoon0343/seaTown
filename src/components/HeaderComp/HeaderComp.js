@@ -3,7 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -11,11 +11,13 @@ export const HeaderComp = props => {
   return (
     <View style={styles.mainView}>
       <View style={styles.headerLeftView}>
-        <Image
-          source={require('../../images/Menu.png')}
-          resizeMode="contain"
-          style={{height: hp('5'), width: wp('5')}}
-        />
+        <TouchableOpacity onPress={() => props?.openDrawer()}>
+          <Image
+            source={require('../../images/Menu.png')}
+            resizeMode="contain"
+            style={{height: hp('5'), width: wp('5')}}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.headerCenterView}>
         <Text style={styles.headerText}>{props?.heading}</Text>
