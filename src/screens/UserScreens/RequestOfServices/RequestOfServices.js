@@ -19,7 +19,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {color} from '../../../components/color';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
-const RequestOfServices = () => {
+const RequestOfServices = ({navigation}) => {
   const [text, onChangeText] = React.useState('Useless Text');
   const [number, onChangeNumber] = React.useState(null);
 
@@ -141,7 +141,9 @@ const RequestOfServices = () => {
           text={'Reports'}
         />
 
-        <Text style={{textAlign: 'center', width: wp('88')}}>
+        <Text
+          style={{textAlign: 'center', width: wp('88'), marginTop: hp('1')}}
+        >
           *Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus
           velit arcu faucibus aliquet
         </Text>

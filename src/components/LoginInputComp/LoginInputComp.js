@@ -24,11 +24,24 @@ export const LoginInputComp = props => {
         backgroundColor:
           props?.isFocused == true ? 'white' : color.borderThirdColor,
       }}>
+      {props.firstIcon && (
+        <Ionicons
+          onPress={props?.firstIconPress}
+          name={props?.firstIcon}
+          color={props?.firstIconColor}
+          style={{
+            marginRight: wp('2'),
+            // marginLeft: wp('3'),
+          }}
+          size={hp('2')}
+        />
+      )}
+
       <TextInput
         style={{
           color: 'black',
           fontSize: hp('2'),
-          width: wp('76'),
+          width: wp('65'),
         }}
         ref={props?.ref}
         placeholder={props?.placeholder}

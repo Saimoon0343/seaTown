@@ -118,6 +118,13 @@ const DrawerContent = (props) => {
         />
 {/*         
         <Stack.Screen
+          <Stack.Screen
+            name="UpadateProfileScreen"
+            component={captionScreens.UpadateProfileScreen}
+          />
+        </>
+        {/* )} */}
+        {/* <Stack.Screen
           name="CurrencyMethodScreen"
           component={screens.CurrencyMethodScreen}
         />
