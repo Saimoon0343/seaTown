@@ -3,27 +3,25 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {screens} from '../screens/UserScreens/index';
 import UserBottomnavigation from './UserBottomnavigation';
 import {useSelector} from 'react-redux';
-import {  Image, StyleSheet, View,Text, TouchableOpacity } from 'react-native';
+import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItem,
-} from '@react-navigation/drawer';//
-import Animated, { interpolate, Value } from 'react-native-reanimated';
+} from '@react-navigation/drawer'; //
+import Animated, {interpolate, Value} from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
-import Home from '../screens/Home'
-import About from '../screens/About'
-import Settings from '../screens/Settings'
-
+import Home from '../screens/Home';
+import About from '../screens/About';
+import Settings from '../screens/Settings';
 
 import CaptionBottomNavigation from './CaptionBottomNavigation';
 import {captionScreens} from '../screens/CaptionScreens/index';
 const Stack = createNativeStackNavigator();
 
+const Drawer = createDrawerNavigator(); //Bilal
 
-const Drawer = createDrawerNavigator();//Bilal
-
-const DrawerContent = (props) => {
+const DrawerContent = props => {
   return (
     <DrawerContentScrollView {...props} scrollEnabled={false}>
       <DrawerItem
@@ -45,7 +43,7 @@ const DrawerContent = (props) => {
   );
 };
 
-  const  StackNavigatior=({style,navigation})=> {
+const StackNavigatior = ({style, navigation}) => {
   const {userData} = useSelector(state => state.userData);
   return (
     <Animated.View style={[styles.stack, style]}>
@@ -55,16 +53,17 @@ const DrawerContent = (props) => {
           headerTitle: null,
           // animation: 'slide_from_left',
           headerShown: false,
-          headerLeft:()=>(
+          headerLeft: () => (
             <TouchableOpacity onPress={navigation.openDrawer}>
               <Image
-                resizeMode='contain'
-                source={ require('../images/Menu.png')}
+                resizeMode="contain"
+                source={require('../images/Menu.png')}
                 style={styles.menu}
               />
             </TouchableOpacity>
-          )
-        }}>
+          ),
+        }}
+      >
         {/* {userData?.data?.user_role == 0 ? (
           <>
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
@@ -79,44 +78,48 @@ const DrawerContent = (props) => {
             component={GuiderBottomNavigation}
           />
         ) : ( */}
-          <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
-          <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
-          <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
-          <Stack.Screen
-            name="ResetPasswordScreen"
-            component={screens.ResetPasswordScreen}
-          />
-          <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
-          {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="About" component={About} />
-          <Stack.Screen name="Settings" component={Settings} />
-          
-          <Stack.Screen
-            name="ServicesDetailsScreen"
-            component={screens.ServicesDetailsScreen}
-          />
-          <Stack.Screen
-            name="UserBottomnavigation"
-            component={UserBottomnavigation}
-          />
-          <Stack.Screen
-            name="CaptionBottomNavigation"
-            component={CaptionBottomNavigation}
-          />
-          <Stack.Screen
-            name="NotificationScreen"
-            component={screens.NotificationScreen}
-          />
-          <Stack.Screen
-            name="BookingDetailsScreen"
-            component={captionScreens.BookingDetailsScreen}
-          />
+        <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
+        <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
+        <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
+        <Stack.Screen
+          name="ResetPasswordScreen"
+          component={screens.ResetPasswordScreen}
+        />
+        <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
+        {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="About" component={About} />
+        <Stack.Screen name="Settings" component={Settings} />
+
+        <Stack.Screen
+          name="ServicesDetailsScreen"
+          component={screens.ServicesDetailsScreen}
+        />
+        <Stack.Screen
+          name="UserBottomnavigation"
+          component={UserBottomnavigation}
+        />
+        <Stack.Screen
+          name="CaptionBottomNavigation"
+          component={CaptionBottomNavigation}
+        />
+        <Stack.Screen
+          name="NotificationScreen"
+          component={screens.NotificationScreen}
+        />
+        <Stack.Screen
+          name="BookingDetailsScreen"
+          component={captionScreens.BookingDetailsScreen}
+        />
         <Stack.Screen
           name="RequestOfServices"
           component={screens.RequestOfServices}
         />
-{/*         
+        <Stack.Screen
+          name="CreateWorkOrderScreen"
+          component={captionScreens.CreateWorkOrderScreen}
+        />
+        {/*         
         <Stack.Screen
           <Stack.Screen
             name="UpadateProfileScreen"
@@ -170,19 +173,13 @@ const DrawerContent = (props) => {
           component={screens.PendingPackageScreen}
         />  */}
       </Stack.Navigator>
-      </Animated.View>
-    
+    </Animated.View>
   );
- }
+};
 
-
-
-
-
- export default () => {
+export default () => {
   const [progress, setProgress] = useState(new Animated.Value(0));
-  console.log(1002,progress)
-  const scale =Animated.interpolateNode(progress, {
+  const scale = Animated.interpolateNode(progress, {
     inputRange: [0, 1],
     outputRange: [1, 0.8],
   });
@@ -201,8 +198,7 @@ const DrawerContent = (props) => {
         drawerStyle={styles.drawerStyles}
         contentContainerStyle={styles.container}
         screenOptions={{
-          headerShown:false,
-
+          headerShown: false,
         }}
         drawerContentOptions={{
           activeBackgroundColor: 'transparent',
@@ -210,12 +206,13 @@ const DrawerContent = (props) => {
           inactiveTintColor: 'white',
         }}
         sceneContainerStyle={styles.scene}
-        drawerContent={(props) => {
+        drawerContent={props => {
           setProgress(props.progress);
           return <DrawerContent {...props} />;
-        }}>
+        }}
+      >
         <Drawer.Screen name="StackNavigatior">
-          {(props) => <StackNavigatior {...props} style={animatedStyle} />}
+          {props => <StackNavigatior {...props} style={animatedStyle} />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </LinearGradient>
@@ -271,4 +268,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-

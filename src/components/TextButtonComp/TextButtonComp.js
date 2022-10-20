@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {
   widthPercentageToDP as wp,
@@ -9,14 +9,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {color} from '../color';
 const TextButtonComp = props => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={() => props?.onPress()} style={styles.container}>
       <Entypo
         style={{marginRight: wp('2')}}
         name={props?.name}
         size={hp('2.5')}
       />
       <Text>{props?.text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

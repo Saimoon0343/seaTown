@@ -33,6 +33,11 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.7'),
     color: color.textColor,
   },
+  yearText: {
+    color: color.lightBlueColor,
+    marginLeft: 'auto',
+    marginRight: wp('2'),
+  },
   captionText: {
     backgroundColor: color.textPrimaryColor,
     color: color.yellowTxtColor,
@@ -52,10 +57,5 @@ export const styles = StyleSheet.create({
     marginTop: hp('2'),
     alignItems: 'center',
     marginBottom: hp('2'),
-  },
-  yearText: {
-    color: color.lightBlueColor,
-    marginLeft: 'auto',
-    marginRight: wp('2'),
   },
 });

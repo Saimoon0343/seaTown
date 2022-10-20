@@ -32,4 +32,5 @@ export const color = {
   lightPurple: '#D8CCE8',
   pendingText: '#C5CA5B',
   inputColor: '#DDE4EA',
+  backgroundGrayLight: '#EDF1F3',
 };

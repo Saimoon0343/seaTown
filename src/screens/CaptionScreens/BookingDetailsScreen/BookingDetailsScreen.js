@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -23,6 +23,7 @@ import {ActionButtonComp} from '../../../components/ActionButtonComp/ActionButto
 
 const BookingDetailsScreen = ({route, navigation}) => {
   const item = route.params.item;
+  const [TrackViewState, setTrackViewState] = useState(false);
   const CoordenatesView = props => {
     return (
       <View style={{...styles.coordenatesView, ...props?.style}}>
@@ -69,7 +70,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
                 color: color.themeColorDark,
                 marginLeft: hp('1'),
                 fontSize: hp('1.7'),
-              }}>
+              }}
+            >
               35.5 miles away
             </Text>
           </View>
@@ -79,7 +81,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
               justifyContent: 'space-between',
               width: wp('43'),
               marginLeft: hp('1'),
-            }}>
+            }}
+          >
             <ActionButtonComp image={require('../../../images/Vector.png')} />
             <ActionButtonComp image={require('../../../images/Chat.png')} />
             <ActionButtonComp image={require('../../../images/Call.png')} />
@@ -155,6 +158,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
         <CommonButtonComp
           text="Create Work Order"
           viewStyle={{width: wp('90'), marginTop: hp('3')}}
+          onPress={() => navigation.navigate('CreateWorkOrderScreen')}
         />
       </View>
     );
@@ -164,7 +168,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
       <>
         <UserDetailsView />
         <View
-          style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}>
+          style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}
+        >
           <TextHeadingCom
             heading="Cancellation Reason"
             style={{
@@ -192,7 +197,32 @@ const BookingDetailsScreen = ({route, navigation}) => {
         <CommonButtonComp
           text="Start"
           viewStyle={{width: wp('90'), marginTop: hp('3')}}
+          onPress={() => setTrackViewState(true)}
         />
+      </View>
+    );
+  };
+  const TrackView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={styles.trackInnerView}>
+          <Ionicons
+            name="close-sharp"
+            color={color.lightBlueColor}
+            size={hp('3')}
+            onPress={() => setTrackViewState(false)}
+            style={{
+              alignSelf: 'flex-end',
+              marginRight: wp('2'),
+            }}
+          />
+          <Image
+            source={require('../../../images/locationImage.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          />
+          <CommonButtonComp viewStyle={{width: wp('70')}} text={'Track User'} />
+        </View>
       </View>
     );
   };
@@ -273,7 +303,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
           </View>
           <TouchableOpacity style={styles.priceButton}>
             <Text
-              style={{color: 'white', fontWeight: 'bold', fontSize: hp('1.6')}}>
+              style={{color: 'white', fontWeight: 'bold', fontSize: hp('1.6')}}
+            >
               AED 500
             </Text>
           </TouchableOpacity>
@@ -303,6 +334,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
         {CheckStatus(item.status)}
         {/* <CancellationView /> */}
       </ScrollView>
+      {/* <TrackView /> */}
     </View>
   );
 };
