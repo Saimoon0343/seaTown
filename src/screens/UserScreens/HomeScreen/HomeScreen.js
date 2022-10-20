@@ -84,16 +84,12 @@ const HomeScreen = ({navigation}) => {
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />
+        <View style={styles.serContainer}>
         <TextHeadingCom
           heading="Services"
           style={{marginTop: hp('2'), marginLeft: hp('2')}}
         />
-        <UserHomeServicesComp
-          onPress={() => navigates()}
-          data={services}
-          isloading={loading}
-        />
-        <TouchableOpacity style={styles.requestButton}>
+        <TouchableOpacity  onPress={()=>navigation.navigate('RequestOfServices')} style={styles.requestSmallButton}>
           <Foundation
             name="page-edit"
             color={color.textPrimaryColor}
@@ -104,6 +100,12 @@ const HomeScreen = ({navigation}) => {
             Request a service
           </Text>
         </TouchableOpacity>
+        </View>
+        <UserHomeServicesComp
+          onPress={() => navigates()}
+          data={services}
+          isloading={loading}
+        />
       </ScrollView>
     </View>
   );

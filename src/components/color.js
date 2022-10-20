@@ -20,6 +20,7 @@ export const color = {
   textImagebackgroundColor: '#D8D8D8',
   txtInputbackColor: '#F5F5F5',
   badgeColor: '#FF2D2D',
+  // lightBlueColorLight: ,
   bottomBarColorlightView: '#DACBFA',
   ThankYouColor: '#8161C8',
   BookingTypeColor: '#3ba3b5',

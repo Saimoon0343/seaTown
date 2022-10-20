@@ -6,17 +6,19 @@ import {
 import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
-  requestButton: {
-    width: wp('80'),
-    height: hp('7'),
+
+  requestSmallButton: {
+    width: wp('50'),
+    height: hp('5'),
     borderColor: color.textPrimaryColor,
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 8,
     backgroundColor: 'white',
     justifyContent: 'center',
+    
     alignItems: 'center',
-    alignSelf: 'center',
     marginTop: hp('2'),
     flexDirection: 'row',
   },
+  serContainer:{flexDirection:'row', justifyContent:'space-between',width:wp('95'),alignItems:'center'}
 });
