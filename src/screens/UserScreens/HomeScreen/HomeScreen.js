@@ -20,12 +20,14 @@ const HomeScreen = ({navigation}) => {
       text: 'Towing',
       innerImage: require('../../../images/TowingServices.png'),
       innerText: 'Towing Services',
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
     {
       id: 2,
       image: require('../../../images/Passenger.png'),
       text: 'Passenger Transfer',
       innerImage: require('../../../images/PassengerTranfer.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
     {
       id: 3,
@@ -52,6 +54,8 @@ const HomeScreen = ({navigation}) => {
       id: 7,
       image: require('../../../images/Electrician.png'),
       text: 'Electrical Services',
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+
       innerImage: require('../../../images/ElectricalServices.png'),
     },
     {
@@ -59,6 +63,7 @@ const HomeScreen = ({navigation}) => {
       image: require('../../../images/Mechanical.png'),
       text: 'Mechanical Services',
       innerImage: require('../../../images/MechinacalServices.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
     {
       id: 9,
@@ -68,7 +73,6 @@ const HomeScreen = ({navigation}) => {
   ]);
   const [loading, setLoading] = useState(true);
   const navigates = item => {
-    console.log(65, item);
     navigation.navigate('ServicesDetailsScreen', {item: item});
   };
   setTimeout(() => {
