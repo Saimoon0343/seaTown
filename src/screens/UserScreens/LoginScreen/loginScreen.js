@@ -131,7 +131,8 @@ const LoginScreen = ({route, navigation}) => {
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}>
+      style={styles.container}
+    >
       <StatusBar hidden={false} barStyle={'dark-content'} />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
@@ -179,7 +180,9 @@ const LoginScreen = ({route, navigation}) => {
           <Text style={styles.rememberText}>Remember me</Text>
           <TouchableOpacity
             style={{marginLeft: 'auto'}}
-            onPress={() => navigation.navigate('ForgetScreen')}>
+            // onPress={() => navigation.navigate('ForgetScreen')}
+            onPress={() => navigation.navigate('PrivacyPolicy')}
+          >
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
         </View>

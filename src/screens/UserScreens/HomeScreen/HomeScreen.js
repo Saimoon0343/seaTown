@@ -21,54 +21,99 @@ const HomeScreen = ({navigation}) => {
       innerImage: require('../../../images/TowingServices.png'),
       innerText: 'Towing Services',
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      rating: 4,
     },
     {
       id: 2,
-      image: require('../../../images/Passenger.png'),
+      innerText: 'Passenger Transfer',
+
       text: 'Passenger Transfer',
+      image: require('../../../images/Passenger.png'),
       innerImage: require('../../../images/PassengerTranfer.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      rating: 4,
     },
     {
       id: 3,
+      innerText: 'Refueling',
+
       image: require('../../../images/Fuel.png'),
       text: 'Refueling',
       innerImage: require('../../../images/RefullingServices.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      rating: 4,
     },
     {
       id: 4,
+      innerText: 'Electrical Services',
+
+      image: require('../../../images/Electrician.png'),
+      text: 'Electrical Services',
+      innerImage: require('../../../images/ElectricalServices.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      rating: 4,
+      // ProName: 'Our Professional',
+
+      electricServices: [
+        {
+          id: 1,
+          profession: 'electrician',
+          name: 'Emerson Bator',
+          rating: 4.5,
+          image: require('../../../images/1.png'),
+        },
+        {
+          id: 2,
+          profession: 'electrician',
+          name: 'Terry Dorwat',
+          rating: 4.5,
+          image: require('../../../images/2.png'),
+        },
+        {
+          id: 3,
+          profession: 'electrician',
+          name: 'Nolan David',
+          rating: 4.5,
+          image: require('../../../images/3.png'),
+        },
+      ],
+    },
+    {
+      id: 5,
+      innerText: 'Mechanical Services',
+      image: require('../../../images/Mechanical.png'),
+      text: 'Mechanical Services',
+      innerImage: require('../../../images/MechinacalServices.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      rating: 4,
+    },
+    {
+      id: 6,
+
+      rating: 4,
+      image: require('../../../images/Road.png'),
+      innerText: 'Road Insurance',
+      innerImage: require('../../../images/RoadInsurance.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      rating: 4,
+      text: 'Road Insurance',
+    },
+    {
+      id: 7,
       image: require('../../../images/Customer.png'),
       text: 'Customer Services',
     },
     {
-      id: 5,
+      id: 8,
       image: require('../../../images/Permit.png'),
       text: 'Selling Permit',
-    },
-    {
-      id: 6,
-      image: require('../../../images/Report.png'),
-      text: 'Report Incidenet',
-    },
-    {
-      id: 7,
-      image: require('../../../images/Electrician.png'),
-      text: 'Electrical Services',
-      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
-
-      innerImage: require('../../../images/ElectricalServices.png'),
-    },
-    {
-      id: 8,
-      image: require('../../../images/Mechanical.png'),
-      text: 'Mechanical Services',
       innerImage: require('../../../images/MechinacalServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
     {
       id: 9,
-      image: require('../../../images/Road.png'),
-      text: 'Road Insurance',
+      image: require('../../../images/Report.png'),
+      text: 'Report Incident',
     },
   ]);
   const [loading, setLoading] = useState(true);
@@ -96,14 +141,16 @@ const HomeScreen = ({navigation}) => {
           />
           <TouchableOpacity
             onPress={() => navigation.navigate('RequestOfServices')}
-            style={styles.requestSmallButton}>
+            style={styles.requestSmallButton}
+          >
             <Foundation
               name="page-edit"
               color={color.textPrimaryColor}
               size={hp('3')}
             />
             <Text
-              style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}>
+              style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}
+            >
               Request a service
             </Text>
           </TouchableOpacity>

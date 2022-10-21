@@ -1,3 +1,4 @@
+import PrivacyPolicy from '../PrivacyPolicy';
 import BookingScreen from './BookingScreen/BookingScreen';
 import EmergncySOSScreen from './EmergncySOSScreen/EmergncySOSScreen';
 import ForgetScreen from './ForgetScreen/ForgetScreen';
@@ -24,5 +25,6 @@ export const screens = {
   ResetPasswordScreen,
   OtpScreen,
   ServicesDetailsScreen,
-  RequestOfServices
+  RequestOfServices,
+  PrivacyPolicy,
 };

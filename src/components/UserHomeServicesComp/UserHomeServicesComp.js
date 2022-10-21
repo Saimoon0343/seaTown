@@ -16,7 +16,8 @@ export const UserHomeServicesComp = props => {
         style={{
           ...styles.touchView,
           backgroundColor: data?.id == 2 ? 'yellow' : 'white',
-        }}>
+        }}
+      >
         <Image
           source={data?.image}
           resizeMode="contain"
@@ -41,7 +42,8 @@ export const UserHomeServicesComp = props => {
           flexDirection: 'row',
           flexWrap: 'wrap',
           justifyContent: 'center',
-        }}>
+        }}
+      >
         {rederView()}
         {rederView()}
         {rederView()}
