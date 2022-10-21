@@ -27,10 +27,12 @@ export const styles = StyleSheet.create({
     shadowRadius: 5.46,
 
     elevation: 9,
-  },
-  bottomInerView: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: wp('6'),
   },
+
   bottomInerTxtView: {
     // marginLeft: wp('10'),
     // marginTop: hp('2'),

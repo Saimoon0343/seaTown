@@ -82,10 +82,9 @@ const ServicesDetailsScreen = ({route, navigation}) => {
           >
             per hour
           </Text>
-          <View>
-            <CommonButtonComp />
-          </View>
         </View>
+
+        <CommonButtonComp />
       </View>
     </>
   );

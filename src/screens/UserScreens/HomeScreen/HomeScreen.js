@@ -34,6 +34,7 @@ const HomeScreen = ({navigation}) => {
       image: require('../../../images/Fuel.png'),
       text: 'Refueling',
       innerImage: require('../../../images/RefullingServices.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
     {
       id: 4,
@@ -54,9 +55,8 @@ const HomeScreen = ({navigation}) => {
       id: 7,
       image: require('../../../images/Electrician.png'),
       text: 'Electrical Services',
-      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
-
       innerImage: require('../../../images/ElectricalServices.png'),
+      des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
     {
       id: 8,
