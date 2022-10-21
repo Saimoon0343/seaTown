@@ -25,6 +25,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import CaptionBottomNavigation from './CaptionBottomNavigation';
 import {captionScreens} from '../screens/CaptionScreens/index';
 import Drawernavigation from './Drawernavigation';
+import ChangePasswordScreen from '../screens/ChangePassword/ChangePassword';
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator(); //Bilal
@@ -115,6 +116,10 @@ const StackNavigatior = ({style, navigation}) => {
       <Stack.Screen
         name="CaptionBottomNavigation"
         component={CaptionBottomNavigation}
+      />
+      <Stack.Screen
+        name="ChangePasswordScreen"
+        component={ChangePasswordScreen}
       />
       <Stack.Screen
         name="NotificationScreen"

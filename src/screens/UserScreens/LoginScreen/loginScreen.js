@@ -189,11 +189,11 @@ const LoginScreen = ({route, navigation}) => {
           text={'Login'}
           style={{marginTop: hp('2')}}
         />
-        <ButtonThemeComp
+        {/* <ButtonThemeComp
           onPress={() => navigation.navigate('CaptionBottomNavigation')}
           text={'Caption Login'}
           style={{marginTop: hp('2')}}
-        />
+        /> */}
       </ScrollView>
       <BottomTextComp
         onPress={() => navigation.navigate('SignUpScreen')}

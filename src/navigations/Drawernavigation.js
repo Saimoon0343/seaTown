@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   Text,
@@ -8,11 +8,13 @@ import {
   ImageBackground,
   StatusBar,
   useWindowDimensions,
+  Easing,
 } from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItem,
+  useDrawerStatus,
 } from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
@@ -26,28 +28,121 @@ import CustomDrawer from './CustomDrawer';
 import Screen from './Screen';
 import UserBottomnavigation from './UserBottomnavigation';
 import HomeScreen from '../screens/UserScreens/HomeScreen/HomeScreen';
+import CaptionBottomNavigation from './CaptionBottomNavigation';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Lottie from 'lottie-react-native';
+import Feather from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {color} from '../components/color';
+
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const {interpolate, Extrapolate} = Animated;
 
 const DrawerContent = props => {
+  const [iconColor, setIconColor] = useState('white');
+  setTimeout(() => {
+    setIconColor(color.yellowTxtColor);
+  }, 3000);
+  const isDrawerOpen = useDrawerStatus() === 'open';
+  const animationProgress = useRef(new Animated.Value(0));
+  useEffect(() => {
+    Animated.timing(animationProgress.current, {
+      toValue: 1,
+      duration: 5000,
+      easing: Easing.linear,
+      useNativeDriver: false,
+    }).start();
+  }, [isDrawerOpen]);
   return (
-    <DrawerContentScrollView {...props} scrollEnabled={false}>
-      <DrawerItem
-        label="Home"
-        labelStyle={styles.drawerLblStyle}
-        onPress={() => props.navigation.navigate('Home')}
-      />
-      <DrawerItem
-        label="About"
-        labelStyle={styles.drawerLblStyle}
-        onPress={() => props.navigation.navigate('About')}
-      />
-      <DrawerItem
-        label="Settings"
-        labelStyle={styles.drawerLblStyle}
-        onPress={() => props.navigation.navigate('Settings')}
-      />
+    <DrawerContentScrollView
+      {...props}
+      // style={{paddingLeft: wp('2')}}
+      scrollEnabled={false}>
+      {isDrawerOpen == true && (
+        <Lottie
+          autoPlay
+          loop={false}
+          // progress={animationProgress.current}
+          style={{flex: 1, height: hp('100'), position: 'absolute'}}
+          source={require('../images/78293-water-fills-square-progress-bar.json')}
+        />
+      )}
+      <Text
+        style={{
+          fontSize: hp('5'),
+          marginLeft: wp('5'),
+          color: 'white',
+          marginTop: hp('2'),
+        }}>
+        Menu
+      </Text>
+
+      <View style={{marginTop: hp('5'), marginLeft: wp('2')}}>
+        <DrawerItem
+          icon={({focused, size}) => (
+            <Ionicons
+              name="ios-stopwatch-outline"
+              size={size}
+              color={iconColor}
+            />
+          )}
+          style={{color: 'white'}}
+          label="Availability"
+          labelStyle={styles.drawerLblStyle}
+          onPress={() => console.log('6789')}
+        />
+        <DrawerItem
+          icon={({focused, size}) => (
+            <Ionicons
+              name="lock-closed-outline"
+              size={size}
+              color={iconColor}
+            />
+          )}
+          label="Change Password"
+          labelStyle={styles.drawerLblStyle}
+          onPress={() => {
+            props.navigation.closeDrawer(),
+              props.navigation.navigate('ChangePasswordScreen');
+          }}
+        />
+        <DrawerItem
+          icon={({focused, size}) => (
+            <Ionicons
+              name="notifications-outline"
+              size={size}
+              color={iconColor}
+            />
+          )}
+          label="Notification"
+          labelStyle={styles.drawerLblStyle}
+          onPress={() => {
+            props.navigation.closeDrawer(),
+              props.navigation.navigate('NotificationScreen');
+          }}
+        />
+        <DrawerItem
+          icon={({focused, size}) => (
+            <MaterialIcons name="event-note" size={size} color={iconColor} />
+          )}
+          label="Terms of Service"
+          labelStyle={styles.drawerLblStyle}
+          onPress={() => props.navigation.navigate('Settings')}
+        />
+        <DrawerItem
+          icon={({focused, size}) => (
+            <MaterialIcons name="event-note" size={size} color={iconColor} />
+          )}
+          label="Privacy Policy"
+          labelStyle={styles.drawerLblStyle}
+          onPress={() => props.navigation.navigate('Settings')}
+        />
+      </View>
     </DrawerContentScrollView>
   );
 };
@@ -152,8 +247,8 @@ const Drawernavigation = () => {
           // return <CustomDrawerContent {...props} />;
           return <DrawerContent {...props} />;
         }}>
-        <Drawer.Screen name="UserBottomnavigation">
-          {props => <UserBottomnavigation style={animatedStyle} />}
+        <Drawer.Screen name="CaptionBottomNavigation">
+          {props => <CaptionBottomNavigation style={animatedStyle} />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </LinearGradient>
@@ -222,7 +317,8 @@ const styles = StyleSheet.create({
   },
   drawerLblStyle: {
     fontWeight: '500',
-    fontSize: 20,
+    fontSize: hp('2'),
+    color: 'white',
   },
 });
 

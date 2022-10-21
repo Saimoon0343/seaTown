@@ -91,6 +91,7 @@ const GuiderHomeScreen = ({navigation}) => {
         notificationPress={() => navigation.navigate('NotificationScreen')}
         heading={'Home'}
         notification={true}
+        openDrawer={() => navigation.openDrawer()}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />
