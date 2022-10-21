@@ -39,11 +39,13 @@ const styles = StyleSheet.create({
     fontSize: hp('3.1'),
     fontWeight: 'bold',
     fontFamily: 'Helvetica',
+    color:"black"
   },
   dateTxt: {
     fontSize: hp('1.8'),
     // fontWeight: 'bold',
     fontFamily: 'Helvetica',
+    color:"black"
   },
   desTxt: {
     marginTop: hp('3'),
@@ -52,5 +54,6 @@ const styles = StyleSheet.create({
     lineHeight: hp('2.1'),
     // fontWeight: 'bold',
     fontFamily: 'Helvetica',
+    color:"black"
   },
 });
