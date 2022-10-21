@@ -9,7 +9,7 @@ const PrivacyPageComponents = props => {
   console.log(45, props);
   return (
     <>
-      <BackHeaderComp />
+      <BackHeaderComp onPress={() => props?.onPresss()} />
       <ScrollView style={styles.Container}>
         <View style={styles.innerView}>
           <Text style={styles.txt}>{props?.text}</Text>

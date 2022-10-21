@@ -61,7 +61,7 @@ const DrawerContent = props => {
   return (
     <DrawerContentScrollView
       {...props}
-      // style={{paddingLeft: wp('2')}}
+      contentContainerStyle={{flex: 1}}
       scrollEnabled={false}>
       {isDrawerOpen == true && (
         <Lottie
@@ -81,66 +81,93 @@ const DrawerContent = props => {
         }}>
         Menu
       </Text>
-
-      <View style={{marginTop: hp('5'), marginLeft: wp('2')}}>
+      <View
+        style={{
+          justifyContent: 'space-between',
+          height: hp('85'),
+        }}>
+        <View style={{marginTop: hp('5'), marginLeft: wp('2')}}>
+          <DrawerItem
+            icon={({focused, size}) => (
+              <Ionicons
+                name="ios-stopwatch-outline"
+                size={size}
+                color={iconColor}
+              />
+            )}
+            style={{color: 'white'}}
+            label="Availability"
+            labelStyle={styles.drawerLblStyle}
+            onPress={() => console.log('6789')}
+          />
+          <DrawerItem
+            icon={({focused, size}) => (
+              <Ionicons
+                name="lock-closed-outline"
+                size={size}
+                color={iconColor}
+              />
+            )}
+            label="Change Password"
+            labelStyle={styles.drawerLblStyle}
+            onPress={() => {
+              props.navigation.closeDrawer(),
+                props.navigation.navigate('ChangePasswordScreen');
+            }}
+          />
+          <DrawerItem
+            icon={({focused, size}) => (
+              <Ionicons
+                name="notifications-outline"
+                size={size}
+                color={iconColor}
+              />
+            )}
+            label="Notification"
+            labelStyle={styles.drawerLblStyle}
+            onPress={() => {
+              props.navigation.closeDrawer(),
+                props.navigation.navigate('NotificationScreen');
+            }}
+          />
+          <DrawerItem
+            icon={({focused, size}) => (
+              <MaterialIcons name="event-note" size={size} color={iconColor} />
+            )}
+            label="Terms of Service"
+            labelStyle={styles.drawerLblStyle}
+            onPress={() => {
+              props.navigation.closeDrawer(),
+                props.navigation.navigate('TermOfServices');
+            }}
+          />
+          <DrawerItem
+            icon={({focused, size}) => (
+              <MaterialIcons name="event-note" size={size} color={iconColor} />
+            )}
+            label="Privacy Policy"
+            labelStyle={styles.drawerLblStyle}
+            onPress={() => {
+              props.navigation.closeDrawer(),
+                props.navigation.navigate('PrivacyPolicy');
+            }}
+          />
+        </View>
         <DrawerItem
           icon={({focused, size}) => (
-            <Ionicons
-              name="ios-stopwatch-outline"
-              size={size}
-              color={iconColor}
-            />
+            <Ionicons name="log-in-outline" size={size} color={iconColor} />
           )}
-          style={{color: 'white'}}
-          label="Availability"
-          labelStyle={styles.drawerLblStyle}
-          onPress={() => console.log('6789')}
-        />
-        <DrawerItem
-          icon={({focused, size}) => (
-            <Ionicons
-              name="lock-closed-outline"
-              size={size}
-              color={iconColor}
-            />
-          )}
-          label="Change Password"
+          style={{
+            // backgroundColor: 'green',
+            bottom: hp('0'),
+            marginLeft: wp('5'),
+          }}
+          label="Logout"
           labelStyle={styles.drawerLblStyle}
           onPress={() => {
             props.navigation.closeDrawer(),
-              props.navigation.navigate('ChangePasswordScreen');
+              props.navigation.navigate('LoginScreen');
           }}
-        />
-        <DrawerItem
-          icon={({focused, size}) => (
-            <Ionicons
-              name="notifications-outline"
-              size={size}
-              color={iconColor}
-            />
-          )}
-          label="Notification"
-          labelStyle={styles.drawerLblStyle}
-          onPress={() => {
-            props.navigation.closeDrawer(),
-              props.navigation.navigate('NotificationScreen');
-          }}
-        />
-        <DrawerItem
-          icon={({focused, size}) => (
-            <MaterialIcons name="event-note" size={size} color={iconColor} />
-          )}
-          label="Terms of Service"
-          labelStyle={styles.drawerLblStyle}
-          onPress={() => props.navigation.navigate('Settings')}
-        />
-        <DrawerItem
-          icon={({focused, size}) => (
-            <MaterialIcons name="event-note" size={size} color={iconColor} />
-          )}
-          label="Privacy Policy"
-          labelStyle={styles.drawerLblStyle}
-          onPress={() => props.navigation.navigate('Settings')}
         />
       </View>
     </DrawerContentScrollView>
@@ -245,10 +272,14 @@ const Drawernavigation = () => {
         drawerContent={props => {
           setProgress(props.progress);
           // return <CustomDrawerContent {...props} />;
-          return <DrawerContent {...props} />;
+          return (
+            <View style={{flex: 1}}>
+              <DrawerContent {...props} />
+            </View>
+          );
         }}>
         <Drawer.Screen name="CaptionBottomNavigation">
-          {props => <CaptionBottomNavigation style={animatedStyle} />}
+          {props => <CaptionBottomNavigation />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </LinearGradient>

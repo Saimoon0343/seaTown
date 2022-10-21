@@ -26,6 +26,7 @@ import CaptionBottomNavigation from './CaptionBottomNavigation';
 import {captionScreens} from '../screens/CaptionScreens/index';
 import Drawernavigation from './Drawernavigation';
 import ChangePasswordScreen from '../screens/ChangePassword/ChangePassword';
+import TermOfServices from '../screens/TermOfServices';
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator(); //Bilal
@@ -77,8 +78,7 @@ const StackNavigatior = ({style, navigation}) => {
         //     />
         //   </TouchableOpacity>
         // ),
-      }}
-    >
+      }}>
       {/* {userData?.data?.user_role == 0 ? (
           <>
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
@@ -118,6 +118,7 @@ const StackNavigatior = ({style, navigation}) => {
         name="CaptionBottomNavigation"
         component={CaptionBottomNavigation}
       />
+      <Stack.Screen name="TermOfServices" component={TermOfServices} />
       <Stack.Screen
         name="ChangePasswordScreen"
         component={ChangePasswordScreen}
@@ -159,12 +160,10 @@ function CustomDrawerContent(props) {
           style={[
             styles.menuItemsCard,
             {backgroundColor: '#fff2df', width: width, height: width},
-          ]}
-        >
+          ]}>
           <>
             <View
-              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}
-            >
+              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}>
               <Feather travel name="briefcase" size={25} color="#fbae41" />
               <DrawerItem
                 label="Screen1"
@@ -193,8 +192,7 @@ function CustomDrawerContent(props) {
           style={[
             styles.menuItemsCard,
             {backgroundColor: '#EFFFD5', width: width, height: width},
-          ]}
-        >
+          ]}>
           <View style={[styles.circleContainer, {backgroundColor: '#b5ff39'}]}>
             <Feather Medical name="briefcase" size={25} color="#609806" />
           </View>
