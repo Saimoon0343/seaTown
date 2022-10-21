@@ -4,6 +4,8 @@ import AppTwo from './AppTwo';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor, store} from './src/Redux/Reducer/index';
+import Drawernavigation from './src/navigations/Drawernavigation';
+import AnimateStackOnDrawerToggle from './src/navigations/Drawernavigation';
 // import {NativeBaseProvider, Box} from 'native-base';
 
 function App() {

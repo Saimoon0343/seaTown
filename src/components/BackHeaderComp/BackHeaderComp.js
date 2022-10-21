@@ -15,7 +15,8 @@ export const BackHeaderComp = props => {
           width: wp('20'),
           justifyContent: 'center',
           alignItems: 'center',
-        }}>
+        }}
+      >
         <Ionicons
           onPress={() => props?.onPress()}
           name="arrow-back"

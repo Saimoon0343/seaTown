@@ -131,7 +131,8 @@ const LoginScreen = ({route, navigation}) => {
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}>
+      style={styles.container}
+    >
       <StatusBar hidden={false} barStyle={'dark-content'} />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
@@ -139,14 +140,8 @@ const LoginScreen = ({route, navigation}) => {
           style={styles.topImage}
           resizeMode="contain"
         />
-        <TextHeadingCom heading={'Login'} style={{marginTop: hp('10')}} />
-        <Text
-          style={{
-            fontSize: hp('1.5'),
-            color: 'gray',
-            textAlign: 'center',
-            marginTop: hp('2'),
-          }}>
+        <TextHeadingCom heading={'Login'} style={{marginTop: hp('7')}} />
+        <Text style={styles.loginText}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </Text>
         <LoginInputComp
@@ -185,12 +180,15 @@ const LoginScreen = ({route, navigation}) => {
           <Text style={styles.rememberText}>Remember me</Text>
           <TouchableOpacity
             style={{marginLeft: 'auto'}}
-            onPress={() => navigation.navigate('ForgetScreen')}>
+            // onPress={() => navigation.navigate('ForgetScreen')}
+            onPress={() => navigation.navigate('PrivacyPolicy')}
+          >
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('UserBottomnavigation')}
+          onPress={() => navigation.navigate('Drawernavigation')}
+          // onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Login'}
           style={{marginTop: hp('2')}}
         />

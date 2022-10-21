@@ -28,7 +28,11 @@ const CreateWorkOrderScreen = ({navigation}) => {
         <Text style={styles.selTxt}>{props?.text}</Text>
         <View style={styles.txtInput}>
           <View style={{...styles.disContainer, width: wp(width)}}>
-            <TextInput placeholder={props?.placeholder} />
+            <TextInput
+              style={{color: 'black', flex: 1}}
+              placeholder={props?.placeholder}
+              placeholderTextColor={color.textImagebackgroundColor}
+            />
             {props?.iconNotShow != true && (
               <Ionicons
                 size={hp('2')}
@@ -83,16 +87,14 @@ const CreateWorkOrderScreen = ({navigation}) => {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: color.white,
-        }}
-      >
+        }}>
         <View style={{paddingBottom: hp('3')}}>
           <View style={styles.detailsView}>
             <View
               style={{
                 width: wp('40'),
                 justifyContent: 'space-between',
-              }}
-            >
+              }}>
               <Text style={styles.leftText}>Booking ID</Text>
               <Text style={styles.leftText}>Date</Text>
               <Text style={styles.leftText}>Bill to</Text>
@@ -102,8 +104,7 @@ const CreateWorkOrderScreen = ({navigation}) => {
                 width: wp('40'),
                 justifyContent: 'space-between',
                 alignItems: 'flex-end',
-              }}
-            >
+              }}>
               <Text style={styles.rightText}>#00068</Text>
               <Text style={styles.rightText}>13 Dec 2022</Text>
               <Text style={styles.rightText}>Alfonso Vaccaro</Text>

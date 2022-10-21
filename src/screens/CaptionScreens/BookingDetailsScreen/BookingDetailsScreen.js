@@ -153,11 +153,12 @@ const BookingDetailsScreen = ({route, navigation}) => {
                 rating={3.5}
                 maxStars={5}
                 color={color.yellowTxtColor}
+                starSize={wp('4.5')}
                 enableSwiping={false}
                 onChange={() => console.log(32)}
               />
               <Text style={{color: color.lightBlueColor, fontSize: hp('1.5')}}>
-                2
+                2 week ago
               </Text>
             </View>
           </View>

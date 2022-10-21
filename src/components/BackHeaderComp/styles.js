@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     height: Platform.OS == 'ios' ? hp('12') : hp('7'),
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: Platform.OS == 'ios' ? hp('3') : hp('0'),
+    paddingTop: Platform.OS == 'ios' ? hp('5.5') : hp('0'),
     backgroundColor: 'white',
+    alignSelf: 'center',
   },
 });

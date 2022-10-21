@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, Image, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {
   widthPercentageToDP as wp,
@@ -13,17 +20,72 @@ import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButto
 
 const ServicesDetailsScreen = ({route, navigation}) => {
   const [txt, setTxt] = useState();
-  const item = route.params.item;
-  console.log(5465465, item);
+  const items = route.params.item;
+  const OurProffessional = () => {
+    return (
+      <View style={styles.listContainer}>
+        <Text>Our Professional</Text>
+        <View>
+          <FlatList
+            data={items?.electricServices}
+            keyExtractor={(item, index) => index.toString()}
+            numColumns={1}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.flatListView}
+            renderItem={({item}) => {
+              console.log(item);
+              return (
+                <View style={styles.boxView}>
+                  <Image source={item?.image} />
+                  <Text
+                    style={{
+                      marginTop: hp('1'),
+                      color: color.lightBlueColor,
+                      fontSize: hp('1.3'),
+                    }}
+                  >
+                    {item?.profession}
+                  </Text>
+                  <Text
+                    style={{
+                      ...globalStyles.globalTextStyles4,
+                      fontSize: hp('1.5'),
+                    }}
+                  >
+                    {item?.name}
+                  </Text>
+                  <View style={{flexDirection: 'row', marginTop: hp('0.5')}}>
+                    <Text style={{fontSize: hp('1.2')}}>{item?.rating}</Text>
+
+                    <StarRating
+                      rating={item?.rating}
+                      maxStars={1}
+                      color={color.yellowTxtColor}
+                      starSize={wp('3.5')}
+                      starStyle={{marginRight: wp('2'), width: wp('0.5')}}
+                      enableSwiping={false}
+                      onChange={txt => setTxt(txt)}
+                    />
+                  </View>
+                </View>
+              );
+            }}
+          />
+        </View>
+      </View>
+    );
+  };
+  console.log(5465465, items);
   return (
     <>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
-        heading={item?.text}
+        heading={items?.text}
       />
       <ScrollView>
         <Image
-          source={item?.innerImage}
+          source={items?.innerImage}
           resizeMode="contain"
           style={{
             alignSelf: 'center',
@@ -31,42 +93,53 @@ const ServicesDetailsScreen = ({route, navigation}) => {
           }}
         />
         <View style={styles.topTextContainer}>
-          <Text
-            style={{...globalStyles.globalTextStyles4, marginLeft: wp('1')}}
-          >
-            {item.innerText}
+          <Text style={{...globalStyles.globalTextStyles4}}>
+            {items.innerText}
           </Text>
-          <View style={{flexDirection: 'row', marginTop: hp('0.5')}}>
-            <StarRating
-              rating={txt}
-              maxStars={5}
-              color={color.yellowTxtColor}
-              starSize={wp('4.5')}
-              starStyle={{width: wp('1')}}
-              enableSwiping={false}
-              onChange={txt => setTxt(txt)}
-            />
-            <Text
+          {items.rating && (
+            <View
               style={{
-                color: color.lightBlueColor,
-                marginLeft: wp('3'),
-                fontSize: hp('1.5'),
+                flexDirection: 'row',
+                marginTop: hp('0.9'),
+                alignItems: 'center',
               }}
             >
-              {txt}
-            </Text>
-          </View>
+              <StarRating
+                rating={items.rating}
+                maxStars={5}
+                color={color.yellowTxtColor}
+                starSize={wp('4.5')}
+                starStyle={{width: wp('1')}}
+                enableSwiping={false}
+                onChange={txt => setTxt(txt)}
+              />
+              <Text
+                style={{
+                  color: color.black,
+                  marginLeft: wp('3'),
+                  fontSize: hp('1.5'),
+                  fontWeight: 'bold',
+                  textAlignVertical: 'center',
+                }}
+              >
+                {items?.rating}
+              </Text>
+            </View>
+          )}
           <Text
             style={{
               ...globalStyles.globalTextStyles2,
               width: wp('83'),
-              backgroundColor: 'red',
-              marginLeft: wp('1'),
+              marginTop: hp('2'),
+              color: color.lightBlueColor,
+              textAlign: 'justify',
+              lineHeight: hp('2'),
             }}
           >
-            {item?.des}
+            {items?.des}
           </Text>
         </View>
+        {items?.electricServices?.length > 0 && <OurProffessional />}
       </ScrollView>
       <View style={styles.bottomBarView}>
         <View style={styles.bottomInerTxtView}>
@@ -83,8 +156,16 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             per hour
           </Text>
         </View>
-
-        <CommonButtonComp />
+        <CommonButtonComp
+          text="Book Now"
+          viewStyle={{
+            marginRight: wp('4'),
+            width: wp('30'),
+          }}
+          textStyle={{
+            fontWeight: '600',
+          }}
+        />
       </View>
     </>
   );

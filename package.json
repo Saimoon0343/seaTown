@@ -20,7 +20,6 @@
     "@react-native-clipboard/clipboard": "^1.11.1",
     "@react-native-community/checkbox": "^0.5.12",
     "@react-native-community/cli-platform-android": "^9.2.1",
-    "@react-native-community/clipboard": "^1.5.1",
     "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/drawer": "^6.5.0",
