@@ -38,4 +38,10 @@ export const styles = StyleSheet.create({
     marginLeft: wp('2'),
   },
   forgetText: {color: 'red', fontSize: hp('1.5')},
+  loginText: {
+    fontSize: hp('1.5'),
+    color: 'gray',
+    textAlign: 'center',
+    marginTop: hp('2'),
+  },
 });

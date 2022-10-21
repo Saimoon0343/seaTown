@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ImageBackground,
   StatusBar,
+  useWindowDimensions,
 } from 'react-native';
 import {
   createDrawerNavigator,
@@ -23,87 +24,219 @@ import {NavigationContainer} from '@react-navigation/native';
 import {stackScreens} from './services';
 import CustomDrawer from './CustomDrawer';
 import Screen from './Screen';
+import UserBottomnavigation from './UserBottomnavigation';
+import HomeScreen from '../screens/UserScreens/HomeScreen/HomeScreen';
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const {interpolate, Extrapolate} = Animated;
 
-let screenStyle = null;
-const AnimateStackOnDrawerToggle = () => {
+const DrawerContent = props => {
   return (
-    <ImageBackground
-      style={styles.backgroundImage}
-      source={require('../images/MechinacalServices.png')}
-      resizeMode="cover">
-      <StatusBar
-        translucent
-        barStyle="light-content"
-        backgroundColor="transparent"
+    <DrawerContentScrollView {...props} scrollEnabled={false}>
+      <DrawerItem
+        label="Home"
+        labelStyle={styles.drawerLblStyle}
+        onPress={() => props.navigation.navigate('Home')}
       />
-      <View style={styles.transparentView}>
-        <NavigationContainer>
-          <Drawer.Navigator
-            drawerType="back"
-            overlayColor="transparent"
-            sceneContainerStyle={styles.sceneContainerStyle}
-            drawerStyle={styles.drawerStyle}
-            drawerContent={props => {
-              const scale = Animated.interpolateNode(props.progress, {
-                inputRange: [0, 1],
-                outputRange: [1, 0.85],
-                extrapolate: Extrapolate.CLAMP,
-              });
-
-              const borderRadius = Animated.interpolateNode(props.progress, {
-                inputRange: [0, 1],
-                outputRange: [0, 20],
-                extrapolate: Extrapolate.CLAMP,
-              });
-
-              screenStyle = {
-                transform: [
-                  {
-                    scaleY: scale,
-                  },
-                ],
-                borderRadius,
-              };
-
-              return <CustomDrawer {...props} />;
-            }}>
-            {stackScreens.map(screen => {
-              return (
-                <Drawer.Screen key={screen.id} name={screen.name}>
-                  {props => (
-                    <Screen item={screen} {...props} style={{...screenStyle}} />
-                  )}
-                </Drawer.Screen>
-              );
-            })}
-          </Drawer.Navigator>
-        </NavigationContainer>
-      </View>
-    </ImageBackground>
+      <DrawerItem
+        label="About"
+        labelStyle={styles.drawerLblStyle}
+        onPress={() => props.navigation.navigate('About')}
+      />
+      <DrawerItem
+        label="Settings"
+        labelStyle={styles.drawerLblStyle}
+        onPress={() => props.navigation.navigate('Settings')}
+      />
+    </DrawerContentScrollView>
   );
 };
+function CustomDrawerContent(props) {
+  const width = useWindowDimensions().width * 0.3;
+
+  return (
+    <DrawerContentScrollView {...props}>
+      <View style={styles.menuContainer}>
+        <View
+          style={[
+            styles.menuItemsCard,
+            {backgroundColor: '#fff2df', width: width, height: width},
+          ]}>
+          <>
+            <View
+              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}>
+              <Feather travel name="briefcase" size={25} color="#fbae41" />
+              <DrawerItem
+                label="Screen1"
+                labelStyle={{color: '#fbae41', fontSize: 10}}
+                onPress={() => {
+                  props.navigation.navigate('Screen1');
+                }}
+              />
+            </View>
+          </>
+          <DrawerItem
+            style={{
+              position: 'absolute',
+              left: 0,
+              width: width,
+              height: width,
+            }}
+            label="Screen2"
+            labelStyle={{color: '#609806'}}
+            onPress={() => {
+              props.navigation.navigate('Screen1');
+            }}
+          />
+        </View>
+        <View
+          style={[
+            styles.menuItemsCard,
+            {backgroundColor: '#EFFFD5', width: width, height: width},
+          ]}>
+          <View style={[styles.circleContainer, {backgroundColor: '#b5ff39'}]}>
+            <Feather Medical name="briefcase" size={25} color="#609806" />
+          </View>
+
+          <DrawerItem
+            style={{
+              position: 'absolute',
+              left: 0,
+              width: width,
+              height: width,
+            }}
+            label="Screen2"
+            labelStyle={{color: '#609806'}}
+            onPress={() => {
+              props.navigation.navigate('StackNav');
+            }}
+          />
+        </View>
+      </View>
+    </DrawerContentScrollView>
+  );
+}
+
+const Drawernavigation = () => {
+  const [progress, setProgress] = useState(new Animated.Value(0));
+  console.log(1002, progress);
+  const scale = Animated.interpolateNode(progress, {
+    inputRange: [0, 1],
+    outputRange: [1, 0.8],
+  });
+  const borderRadius = Animated.interpolateNode(progress, {
+    inputRange: [0, 1],
+    outputRange: [0, 10],
+  });
+  const animatedStyle = {borderRadius, transform: [{scale}]};
+  return (
+    <LinearGradient style={styles.container} colors={['#d303fc', '#0384fc']}>
+      <Drawer.Navigator
+        backBehavior="none"
+        initialRouteName="Home"
+        drawerType="slide"
+        overlayColor="transparent"
+        drawerStyle={styles.drawerStyles}
+        contentContainerStyle={styles.container}
+        screenOptions={{
+          headerShown: false,
+        }}
+        drawerContentOptions={{
+          activeBackgroundColor: 'white',
+          activeTintColor: 'white',
+          inactiveTintColor: 'white',
+        }}
+        sceneContainerStyle={styles.scene}
+        drawerContent={props => {
+          return (
+            // <CustomDrawerContent {...props} />
+            // <View
+            //   style={{
+            //     flex: 1,
+            //     backgroundColor: 'blue',
+            //   }}></View>
+            <DrawerContent {...props} />
+          );
+          // setProgress(props.progress);
+        }}>
+        {/* <Drawer.Screen
+          name="UserBottomnavigation"
+          component={UserBottomnavigation}
+        /> */}
+
+        <Drawer.Screen name="HomeScreen" component={HomeScreen} />
+        {/* <Drawer.Screen name="StackNavigatior" component={StackNavigatior}> */}
+        {/* {props => <StackNavigatior {...props} />} */}
+        {/* </Drawer.Screen> */}
+      </Drawer.Navigator>
+    </LinearGradient>
+  );
+};
+// function Drawernavigation() {
+//   return (
+//     <NavigationContainer>
+//       <Drawer.Navigator initialRouteName="Home">
+//         <Drawer.Screen name="Home" component={HomeScreen} />
+//         {/* <Drawer.Screen name="Notifications" component={} /> */}
+//       </Drawer.Navigator>
+//     </NavigationContainer>
+//   );
+// }
 const styles = StyleSheet.create({
-  backgroundImage: {
-    width: '100%',
-    height: '100%',
+  container: {
+    flex: 1,
+    backgroundColor: 'green',
   },
-
-  transparentView: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgba(0,0,0,0.75)',
+  Container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#03dffc',
   },
+  txt: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'Helvetica',
+  },
+  scene: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
 
-  drawerStyle: {
+    elevation: 24,
     backgroundColor: 'transparent',
-    width: '55%',
   },
-
-  sceneContainerStyle: {
+  stack: {
+    flex: 1,
+    shadowColor: '#fffff',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
+    overflow: 'hidden',
+  },
+  drawerStyles: {
+    flex: 1,
+    width: '50%',
     backgroundColor: 'transparent',
+    color: 'yellow',
+  },
+  menu: {
+    width: 38,
+    height: 12,
+    // margin: 20,
+  },
+  drawerLblStyle: {
+    fontWeight: '500',
+    fontSize: 20,
   },
 });
 
-export default AnimateStackOnDrawerToggle;
+export default Drawernavigation;

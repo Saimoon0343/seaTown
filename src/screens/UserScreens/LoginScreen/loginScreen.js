@@ -139,14 +139,8 @@ const LoginScreen = ({route, navigation}) => {
           style={styles.topImage}
           resizeMode="contain"
         />
-        <TextHeadingCom heading={'Login'} style={{marginTop: hp('10')}} />
-        <Text
-          style={{
-            fontSize: hp('1.5'),
-            color: 'gray',
-            textAlign: 'center',
-            marginTop: hp('2'),
-          }}>
+        <TextHeadingCom heading={'Login'} style={{marginTop: hp('7')}} />
+        <Text style={styles.loginText}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </Text>
         <LoginInputComp

@@ -11,6 +11,7 @@ import {UserHomeServicesComp} from '../../../components/UserHomeServicesComp/Use
 import Foundation from 'react-native-vector-icons/Foundation';
 import {color} from '../../../components/color';
 import {styles} from './styles';
+import {DrawerActions} from '@react-navigation/native';
 
 const HomeScreen = ({navigation}) => {
   const [services, setServices] = useState([
@@ -71,8 +72,11 @@ const HomeScreen = ({navigation}) => {
     console.log(65, item);
     navigation.navigate('ServicesDetailsScreen', {item: item});
   };
-  const openDrawer = () => {
-    navigation.openDrawer();
+
+  const openDrawers = () => {
+    // navigation.openDrawer();
+    console.log(78, DrawerActions);
+    navigation.dispatch(DrawerActions.toggleDrawer());
   };
   setTimeout(() => {
     setLoading(false);
@@ -84,7 +88,7 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
-        openDrawer={openDrawer}
+        openDrawer={openDrawers}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />
@@ -108,7 +112,7 @@ const HomeScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <UserHomeServicesComp
-          onPress={() => navigates()}
+          onPress={item => navigates(item)}
           data={services}
           isloading={loading}
         />

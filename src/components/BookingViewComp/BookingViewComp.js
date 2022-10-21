@@ -24,7 +24,6 @@ export const BookingViewComp = props => {
   };
 
   const checkStatus = status => {
-    console.log(25, props?.data[0].status);
     return statusValue[status];
   };
   const RenderView = prop => {
@@ -32,7 +31,8 @@ export const BookingViewComp = props => {
     return (
       <TouchableOpacity
         onPress={() => props?.onPress(data)}
-        style={styles.mainView}>
+        style={styles.mainView}
+      >
         <View style={styles.leftView}>
           <CircleImage image={data.innerImage} />
         </View>
@@ -46,7 +46,8 @@ export const BookingViewComp = props => {
             style={{
               ...styles.statusText,
               color: checkStatus(data.status),
-            }}>
+            }}
+          >
             {data.status}{' '}
           </Text>
         </View>
