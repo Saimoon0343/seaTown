@@ -24,6 +24,7 @@ import Settings from '../screens/Settings';
 import Feather from 'react-native-vector-icons/Feather';
 import CaptionBottomNavigation from './CaptionBottomNavigation';
 import {captionScreens} from '../screens/CaptionScreens/index';
+import Drawernavigation from './Drawernavigation';
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator(); //Bilal
@@ -63,19 +64,18 @@ const StackNavigatior = ({style, navigation}) => {
         headerTitle: null,
         // animation: 'slide_from_left',
         headerShown: false,
-        contentStyle: {
-          backgroundColor: 'blue',
-          borderColor: 'black',
-        },
-        headerLeft: () => (
-          <TouchableOpacity onPress={navigation.openDrawer}>
-            <Image
-              resizeMode="contain"
-              source={require('../images/Menu.png')}
-              style={styles.menu}
-            />
-          </TouchableOpacity>
-        ),
+        // contentStyle: {
+        // width
+        // },
+        // headerLeft: () => (
+        //   <TouchableOpacity onPress={navigation.openDrawer}>
+        //     <Image
+        //       resizeMode="contain"
+        //       source={require('../images/Menu.png')}
+        //       style={styles.menu}
+        //     />
+        //   </TouchableOpacity>
+        // ),
       }}>
       {/* {userData?.data?.user_role == 0 ? (
           <>
@@ -120,6 +120,7 @@ const StackNavigatior = ({style, navigation}) => {
         name="NotificationScreen"
         component={screens.NotificationScreen}
       />
+      <Stack.Screen name="Drawernavigation" component={Drawernavigation} />
       <Stack.Screen
         name="BookingDetailsScreen"
         component={captionScreens.BookingDetailsScreen}
@@ -141,6 +142,7 @@ const StackNavigatior = ({style, navigation}) => {
     // </Animated.View>
   );
 };
+export default StackNavigatior;
 function CustomDrawerContent(props) {
   const width = useWindowDimensions().width * 0.3;
 
@@ -206,48 +208,48 @@ function CustomDrawerContent(props) {
     </DrawerContentScrollView>
   );
 }
-export default () => {
-  const [progress, setProgress] = useState(new Animated.Value(0));
-  console.log(1002, progress);
-  const scale = Animated.interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.8],
-  });
-  const borderRadius = Animated.interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, 10],
-  });
-  const animatedStyle = {borderRadius, transform: [{scale}]};
-  return (
-    <LinearGradient style={styles.container} colors={['#d303fc', '#0384fc']}>
-      <Drawer.Navigator
-        backBehavior="none"
-        initialRouteName="Home"
-        drawerType="slide"
-        overlayColor="transparent"
-        drawerStyle={styles.drawerStyles}
-        contentContainerStyle={styles.container}
-        screenOptions={{
-          headerShown: false,
-        }}
-        drawerContentOptions={{
-          activeBackgroundColor: 'green',
-          activeTintColor: 'white',
-          inactiveTintColor: 'white',
-        }}
-        sceneContainerStyle={styles.scene}
-        drawerContent={props => {
-          setProgress(props.progress);
-          // return <CustomDrawerContent {...props} />;
-          return <DrawerContent {...props} />;
-        }}>
-        <Drawer.Screen name="StackNavigatior">
-          {props => <StackNavigatior {...props} style={animatedStyle} />}
-        </Drawer.Screen>
-      </Drawer.Navigator>
-    </LinearGradient>
-  );
-};
+// const Drawernavigation = () => {
+//   const [progress, setProgress] = useState(new Animated.Value(0));
+//   console.log(1002, progress);
+//   const scale = Animated.interpolateNode(progress, {
+//     inputRange: [0, 1],
+//     outputRange: [1, 0.8],
+//   });
+//   const borderRadius = Animated.interpolateNode(progress, {
+//     inputRange: [0, 1],
+//     outputRange: [0, 10],
+//   });
+//   const animatedStyle = {borderRadius, transform: [{scale}]};
+//   return (
+//     <LinearGradient style={styles.container} colors={['#d303fc', '#0384fc']}>
+//       <Drawer.Navigator
+//         backBehavior="none"
+//         initialRouteName="Home"
+//         drawerType="slide"
+//         overlayColor="transparent"
+//         drawerStyle={styles.drawerStyles}
+//         contentContainerStyle={styles.container}
+//         screenOptions={{
+//           headerShown: false,
+//         }}
+//         drawerContentOptions={{
+//           activeBackgroundColor: 'green',
+//           activeTintColor: 'white',
+//           inactiveTintColor: 'white',
+//         }}
+//         sceneContainerStyle={styles.scene}
+//         drawerContent={props => {
+//           setProgress(props.progress);
+//           // return <CustomDrawerContent {...props} />;
+//           return <DrawerContent {...props} />;
+//         }}>
+//         <Drawer.Screen name="UserBottomnavigation">
+//           {props => <UserBottomnavigation style={animatedStyle} />}
+//         </Drawer.Screen>
+//       </Drawer.Navigator>
+//     </LinearGradient>
+//   );
+// };
 const styles = StyleSheet.create({
   container: {
     flex: 1,

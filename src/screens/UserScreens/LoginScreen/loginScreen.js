@@ -184,7 +184,8 @@ const LoginScreen = ({route, navigation}) => {
           </TouchableOpacity>
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('UserBottomnavigation')}
+          onPress={() => navigation.navigate('Drawernavigation')}
+          // onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Login'}
           style={{marginTop: hp('2')}}
         />

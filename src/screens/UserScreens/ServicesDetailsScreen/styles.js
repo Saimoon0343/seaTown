@@ -25,14 +25,15 @@ export const styles = StyleSheet.create({
 
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
+    flexDirection: 'row',
 
     elevation: 9,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  bottomInerView: {
-    flexDirection: 'row',
-  },
+  bottomInerView: {},
   bottomInerTxtView: {
-    // marginLeft: wp('10'),
+    marginLeft: wp('4'),
     // marginTop: hp('2'),
   },
 });

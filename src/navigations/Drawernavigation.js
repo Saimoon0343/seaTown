@@ -135,39 +135,26 @@ const Drawernavigation = () => {
         backBehavior="none"
         initialRouteName="Home"
         drawerType="slide"
-        overlayColor="transparent"
+        overlayColor="green"
         drawerStyle={styles.drawerStyles}
         contentContainerStyle={styles.container}
         screenOptions={{
           headerShown: false,
         }}
         drawerContentOptions={{
-          activeBackgroundColor: 'white',
+          activeBackgroundColor: 'green',
           activeTintColor: 'white',
           inactiveTintColor: 'white',
         }}
         sceneContainerStyle={styles.scene}
         drawerContent={props => {
-          return (
-            // <CustomDrawerContent {...props} />
-            // <View
-            //   style={{
-            //     flex: 1,
-            //     backgroundColor: 'blue',
-            //   }}></View>
-            <DrawerContent {...props} />
-          );
-          // setProgress(props.progress);
+          setProgress(props.progress);
+          // return <CustomDrawerContent {...props} />;
+          return <DrawerContent {...props} />;
         }}>
-        {/* <Drawer.Screen
-          name="UserBottomnavigation"
-          component={UserBottomnavigation}
-        /> */}
-
-        <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-        {/* <Drawer.Screen name="StackNavigatior" component={StackNavigatior}> */}
-        {/* {props => <StackNavigatior {...props} />} */}
-        {/* </Drawer.Screen> */}
+        <Drawer.Screen name="UserBottomnavigation">
+          {props => <UserBottomnavigation style={animatedStyle} />}
+        </Drawer.Screen>
       </Drawer.Navigator>
     </LinearGradient>
   );

@@ -15,12 +15,17 @@ export const globalStyles = StyleSheet.create({
     // textDecorationLine: 'underline',
   },
   globalTextStyles2: {
-    fontWeight: 'bold',
-    color: color.white,
-    fontSize: hp('3'),
-  },  
+    color: 'black',
+    fontSize: hp('1.5'),
+  },
   globalTextStyles3: {
     // color:color.black,
-    fontFamily:'Poppins'
-    },  
+    fontFamily: 'Poppins',
+  },
+  globalTextStyles4: {
+    // color:color.black,
+    fontSize: hp('2'),
+    fontWeight: 'bold',
+    color: 'black',
+  },
 });
